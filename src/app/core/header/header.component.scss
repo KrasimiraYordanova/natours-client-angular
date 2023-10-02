@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    background-color:#5c5c5c;
+    border-radius: 0.2rem;
+    padding: 0.5rem 2rem;
+}
+
+.navigation {
+
+    &__list {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: inherit;
+    }
+}
