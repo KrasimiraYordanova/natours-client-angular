@@ -19,13 +19,9 @@
     &__item{
       display: inline-block;
   
-      // &:not(:last-child){
-      //   margin-right: 1.5rem;
-  
-        // @include respond(phone){
-        //   margin-right: 0;
-        // }
-      // }
+      &:not(:last-child){
+        margin-right: 1.5rem;
+      }
     }
     
   
