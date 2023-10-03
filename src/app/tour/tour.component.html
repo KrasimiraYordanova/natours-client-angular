@@ -1,2 +1,7 @@
 <!-- tours list - last 12 upcoming tours -->
-<p>tour works!</p>
+
+ <app-loader *ngIf="!tours"></app-loader>
+
+<div *ngFor="let tour of tours">
+    <h1>{{tour.name}}</h1>
+</div>

@@ -1,18 +1,24 @@
+import { IUser } from "./user";
+
 export interface ITour {
-    
+        _id: string,
         name: string,
+        slug: string,
+        ratingAverage: number,
+        ratingQuantity: number,
         description: string,
         duration: number,
         summary: string,
-        difficulty: ["easy", "medium", "difficult"],
+        difficulty: string[],
         price: number,
         priceDiscount: number,
         maxGroupSize: number,
-        _ownerId: string,
+        _ownerId: IUser,
         imageCover: string,
         images: string[],
         createdAt: string,
         startDates: string[],
+        secretTour: boolean,
 
         // startLocation: {
         //   // GeoJSON
@@ -39,5 +45,6 @@ export interface ITour {
         //   }
         // ],
         
-        guides: string[]
+        guides: IUser[],
+        __v: number
 }

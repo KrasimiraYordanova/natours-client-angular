@@ -7,9 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
-import { MainComponent } from './main/main.component';
+// import { SharedModule } from './shared/shared.module';
 import { TourModule } from './tour/tour.module';
 
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { TourModule } from './tour/tour.module';
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    TourModule
+    TourModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
