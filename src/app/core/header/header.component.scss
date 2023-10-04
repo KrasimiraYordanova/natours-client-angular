@@ -9,6 +9,11 @@
         list-style: none;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+    }
+
+    &__item--logo {
+        font-size: 2rem;
     }
 
     &__items {
@@ -18,6 +23,8 @@
 
     &__link {
         text-decoration: none;
+        text-transform: uppercase;
         color: inherit;
+        font-weight: 200;
     }
 }

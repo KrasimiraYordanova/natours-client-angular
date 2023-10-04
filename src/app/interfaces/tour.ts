@@ -21,26 +21,17 @@ export interface ITour {
         secretTour: boolean,
 
         startLocation: {
-          // GeoJSON
           type: string,
           coordinates: number[],
           address: string,
           description: string
         },
 
-        // locations: [
-        //   {
-        //     type: {
-        //       type: String,
-        //       default: "Point",
-        //       enum: ["Point"]
-        //     },
-        //     coordinates: [Number],
-        //     address: String,
-        //     description: String,
-        //     day: Number
-        //   }
-        // ],
+        locations: [{ 
+          type: string, 
+          coordinates: number[],
+          description: string, 
+          day: number }]
         
         guides: IUser[],
         __v: number
