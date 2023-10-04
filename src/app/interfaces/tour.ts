@@ -20,17 +20,14 @@ export interface ITour {
         startDates: string[],
         secretTour: boolean,
 
-        // startLocation: {
-        //   // GeoJSON
-        //   type: {
-        //     type: String,
-        //     default: "Point",
-        //     enum: ["Point"]
-        //   },
-        //   coordinates: [Number],
-        //   address: String,
-        //   description: String
-        // },
+        startLocation: {
+          // GeoJSON
+          type: string,
+          coordinates: number[],
+          address: string,
+          description: string
+        },
+
         // locations: [
         //   {
         //     type: {
