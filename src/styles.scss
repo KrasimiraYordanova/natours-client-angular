@@ -20,8 +20,37 @@ body {
     font-weight: 300;
     font-size: 1.3rem;
     font-family: 'Nunito', sans-serif;
-    color: #f3f3f3;
+    color: #555555;
     padding: 3rem;
     min-height: 100vh;
 }
 
+.main {
+  background-color: #fafafa;
+}
+
+// typography file .scss
+.heading-primary {
+  font-size: 2.5rem;
+}
+
+.heading-secondary {
+  font-size: 2rem;
+}
+
+.container {
+
+  &--login, &--register {
+    width: 50%;
+    border-radius: 2rem;
+    padding: 3rem;
+  }
+
+}
+
+// componants
+.btn {
+
+  &--green {}
+  
+}

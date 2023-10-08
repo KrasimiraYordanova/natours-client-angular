@@ -4,11 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
-// import { SharedModule } from './shared/shared.module';
 import { TourModule } from './tour/tour.module';
+import { AuthModule } from './auth/auth.module';
+
+import { AppComponent } from './app.component';
 
 import { MainComponent } from './main/main.component';
 
@@ -23,6 +24,7 @@ import { MainComponent } from './main/main.component';
     HttpClientModule,
     CoreModule,
     TourModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
