@@ -6,8 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { CoreModule } from './core/core.module';
-import { TourModule } from './tour/tour.module';
 import { AuthModule } from './auth/auth.module';
+import { TourModule } from './tour/tour.module';
+import { UserModule } from './user/user.module';
 
 import { AppComponent } from './app.component';
 
@@ -24,7 +25,8 @@ import { MainComponent } from './main/main.component';
     HttpClientModule,
     CoreModule,
     TourModule,
-    AuthModule
+    AuthModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

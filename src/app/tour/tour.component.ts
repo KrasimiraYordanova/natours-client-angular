@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TourService } from '../services/tour.service';
-import { ITour } from '../interfaces/tour';
+import { ITour } from '../shared/interfaces/tour';
 
 @Component({
   selector: 'app-tour',
@@ -24,12 +24,4 @@ export class TourComponent implements OnInit {
         }
       })
   }
-
-//   ngOnInit() {
-//     this.tourService.getTours().subscribe(x => {
-//        this.tours = x;
-//        console.log(this.tours);
-//     });  
-//  }
-
 }

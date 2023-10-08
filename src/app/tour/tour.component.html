@@ -1,6 +1,6 @@
 <!-- tours list - last 12 upcoming tours -->
 
- <app-loader *ngIf="!tours"></app-loader>
+<app-spinner *ngIf="!tours"></app-spinner>
 
 <div *ngFor="let tour of tours">
     <h1 class="heading-primary">{{tour.name}}</h1>

@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { IUser } from '../shared/interfaces/user';
 import { environment } from '../../environments/environment';
-import { ITour } from '../shared/interfaces/tour';
 
 const apiURL = environment.apiURL;
 
 @Injectable({
   providedIn: 'root'
 })
-export class TourService {
+export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getTours() {
-    return this.httpClient.get<ITour[]>(`${apiURL}/tours`);
+  loadUsers() {
+    return this.httpClient.get<IUser[]>(`${apiURL}/users`);
   }
 }

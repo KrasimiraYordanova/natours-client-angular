@@ -5,7 +5,6 @@ import { TourComponent } from './tour.component';
 import { SharedModule } from '../shared/shared.module';
 
 
-
 @NgModule({
   declarations: [
     TourComponent
