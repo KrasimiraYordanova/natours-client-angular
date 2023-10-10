@@ -3,5 +3,5 @@
 <app-spinner *ngIf="!tours"></app-spinner>
 
 <div *ngFor="let tour of tours">
-    <h1 class="heading-primary">{{tour.name}}</h1>
+    <h1 class="heading-primary"><span>{{tour._id}}</span>{{tour.name}}</h1>
 </div>
