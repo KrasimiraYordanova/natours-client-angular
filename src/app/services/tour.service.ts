@@ -16,7 +16,7 @@ export class TourService {
     return this.httpClient.get<ITour[]>(`${apiURL}/tours`);
   }
 
-  getTour() {
-    return this.httpClient.get<ITour>(`${apiURL}/id`)
+  getTour(id: number) {
+    // return this.httpClient.get<ITour>(`${apiURL}/tours/${}`)
   }
 }

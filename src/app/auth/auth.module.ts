@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AuthRoutingModule } from './auth-routing.module';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -10,10 +12,12 @@ import { LogoutComponent } from './logout/logout.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    ProfileComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AuthRoutingModule
   ],
   exports: [
     LoginComponent,
