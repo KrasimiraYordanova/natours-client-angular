@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,16 +10,18 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
 
-  constructor(private router: Router, private authService: AuthService) {
-    this.authService.user = {
-      _id: '1',
-      fullName: 'Chloe Smith',
-      email: 'chloes@abv.bg',
-      photo: 'image1.jpg'
-    }
-
-    this.router.navigate(['/']);
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService) {
+    console.log(this.activatedRoute);
   }
 
+  loginHandler(): void {
+    this.authService.user = {
+      fullName: "Chloe Smith",
+      email: "chloes@abv.bg"
+    } as any;
 
+    const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
+
+    this.router.navigate([returnUrl]);
+  }
 }

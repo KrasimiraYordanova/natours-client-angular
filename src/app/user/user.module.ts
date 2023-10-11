@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { AuthGuard } from './user-detail.guard';
 
 
 
@@ -22,13 +21,12 @@ import { AuthGuard } from './user-detail.guard';
       },
       {
         path: 'users/detail/:id',
-        canActivate: [AuthGuard],
         component: UserDetailComponent
       },
     ])
   ],
   exports: [
-    UserComponent,
+    UserComponent
   ]
 })
 export class UserModule { }

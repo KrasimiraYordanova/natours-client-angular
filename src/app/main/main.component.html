@@ -1,5 +1,8 @@
 <main class="main">
     <section class="container">
+        <ng-container *ngIf="isLogged">
+            <!-- we can display info or deal specific to the user if isLogged (if needed) -->
+        </ng-container>
         <app-tour></app-tour>
         <app-user></app-user>
     </section>

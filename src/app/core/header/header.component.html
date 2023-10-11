@@ -2,7 +2,7 @@
 
     <nav class="navigation">
         <ul class="navigation__list">
-            <li class="navigation__item"><a routerLink="/tours" class="navigation__link"><span class="navigation__span"></span>All tours</a></li>
+            <li class="navigation__item"><a routerLink="/tour" class="navigation__link"><span class="navigation__span"></span>All tours</a></li>
             <div class="navigation__logo--box">
                 <li class="navigation__item navigation__item--logo"><a routerLink="/" class="navigation__link">The breathtaking natours</a></li>
             </div>
@@ -13,7 +13,7 @@
                     <li class="navigation__item"><a routerLink="/auth/register" class="navigation__link"><span class="navigation__span"></span>Register</a></li>
                 </ng-container>
                 <ng-container *ngIf="isLogged">
-                    <li class="navigation__item"><a routerLink="/create-tour" class="navigation__link"><span class="navigation__span"></span>Add tour</a></li>
+                    <li class="navigation__item"><a routerLink="/tour/create" class="navigation__link"><span class="navigation__span"></span>Add tour</a></li>
                     <li class="navigation__item"><a routerLink="/auth/profile" class="navigation__link"><span class="navigation__span"></span>{{user?.fullName}}'s profile</a></li>
                     <li class="navigation__item"><a routerLink="/auth/logout" class="navigation__link"><span class="navigation__span"></span>Logout</a></li>
                 </ng-container>

@@ -1,34 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
+import { TourRoutingModule } from './tour-router.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { TourComponent } from './tour/tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
+import { NewTourComponent } from './new-tour/new-tour.component';
 
 
 @NgModule({
   declarations: [
     TourComponent,
-    TourDetailComponent
+    TourDetailComponent,
+    NewTourComponent,
   ],
   imports: [
     CommonModule,
+    TourRoutingModule,
     SharedModule,
-    RouterModule.forChild([
-      {
-        path: 'tours',
-        component: TourComponent
-      },
-      {
-        path: 'tours/detail/:id',
-        component: TourDetailComponent
-      },
-    ])
   ],
   exports: [
-    TourComponent
+    TourComponent,
+    NewTourComponent
   ]
 })
 export class TourModule { }
