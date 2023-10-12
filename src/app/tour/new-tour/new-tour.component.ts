@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-new-tour',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-tour.component.scss']
 })
 export class NewTourComponent {
+
+  constructor(private fb: FormBuilder) {
+    
+  }
 
 }

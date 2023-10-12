@@ -23,7 +23,7 @@ import { MainComponent } from './main/main.component';
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    UserModule
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

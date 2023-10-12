@@ -5,22 +5,31 @@
         <div class="general-form">
             <h2 class="heading-secondary">Create your account</h2>
 
-            <form action="" class="form form--register">
+            <form class="form form--register" [formGroup]="registerForm" (ngSubmit)="handleFormSubmit()">
                 <div class="form__group">
                     <label for="name" class="form__label">Name</label>
-                    <input type="text" id="name" class="form__input" placeholder="you@example.com" required>
+                    <input type="text" id="name" class="form__input" formControlName="name" required>
                 </div>
                 <div class="form__group">
                     <label for="email" class="form__label">Email</label>
-                    <input type="email" id="email" class="form__input" placeholder="you@example.com" required>
+                    <input type="email" id="email" class="form__input" formControlName="email" required>
+                    <ng-container *ngIf="registerForm.get('email')?.touched">
+                        <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</div>
+                        <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email</div>
+                    </ng-container>
                 </div>
                 <div class="form__group">
                     <label for="password" class="form__label">Password</label>
-                    <input type="password" id="password" class="form__input" required>
+                    <input type="password" id="password" class="form__input" formControlName="password" required>
+                    <ng-container *ngIf="registerForm.get('password')?.touched">
+                        <div *ngIf="registerForm.get('password')?.errors?.['minLength']">Password need to have more than 8 characters</div>
+                    </ng-container>
                 </div>
                 <div class="form__group">
                     <button class="btn btn--green">Register</button>
                 </div>
+
+                {{registerForm.value | json }}
             </form>
 
         </div>

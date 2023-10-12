@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { TourComponent } from './tour/tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NewTourComponent } from './new-tour/new-tour.component';
     CommonModule,
     TourRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
   exports: [
     TourComponent,

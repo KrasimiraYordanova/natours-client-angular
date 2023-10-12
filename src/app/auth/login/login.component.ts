@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,18 +11,19 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
 
+  // another way to take reference to the form
+  @ViewChild('loginForm', {static: true}) loginForm!: NgForm; 
+
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService) {
     console.log(this.activatedRoute);
   }
 
-  loginHandler(): void {
-    this.authService.user = {
-      fullName: "Chloe Smith",
-      email: "chloes@abv.bg"
-    } as any;
+  handleFormSubmit(form: NgForm): void {
+    if(form.valid) {
+      const value: {email: string; password: string} = form.value;
+      console.log(value);
+      form.reset();
+    }
+  };
 
-    const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
-
-    this.router.navigate([returnUrl]);
-  }
 }
