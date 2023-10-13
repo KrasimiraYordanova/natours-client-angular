@@ -11,14 +11,15 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder) {}
 
   registerForm = this.fb.group({
-    name: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
-  })
+    name: ['test123'],
+    email: ['test123@gmail.com'],
+    difficulty: ['easy'],
+    pass: this.fb.group({
+      password: ['123456'],
+      rePassword: ['123456']
+    }, {
+      validators: []
+    })
+  });
 
-  
-
-  handleFormSubmit(form: FormBuilder) {
-    console.log(form.group);
-  }
 }

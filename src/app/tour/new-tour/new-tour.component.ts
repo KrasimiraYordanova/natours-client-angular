@@ -8,8 +8,10 @@ import { FormBuilder } from '@angular/forms';
 })
 export class NewTourComponent {
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {}
+
+  tourForm = this.fb.group({
     
-  }
+  })
 
 }
