@@ -6,7 +6,7 @@ import { IUser } from '../shared/interfaces';
 })
 export class AuthService {
 
-  user: IUser | null = null;
+  user: IUser | null = { fullName: "Chloe", email: "chloejames@gmail.com"} as any;
 
   constructor() { }
 

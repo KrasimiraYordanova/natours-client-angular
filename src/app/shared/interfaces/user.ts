@@ -2,7 +2,7 @@ export interface IUser {
     _id: string,
     fullName: string,
     email: string,
-    photo: string,
+    // photo: string,
     // hashedPass: string,
     // role: string,
     // passwordResetToken: string,

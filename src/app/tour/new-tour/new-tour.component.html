@@ -5,69 +5,120 @@
         <div class="general-form">
             <h2 class="heading-secondary">Create a new tour</h2>
 
-            <form action="" class="form form--tour">
+            <form class="form form--tour" [formGroup]="tourForm" (ngSubmit)="newTourHandler()">
                 <div class="form__group">
                     <label for="tourName" class="form__label">Tour name</label>
-                    <input type="text" id="tourName" class="form__input" placeholder="My adventure" required>
+                    <input type="text" id="tourName" class="form__input" formControlName="tourName" required>
                 </div>
                 <div class="form__group">
                     <label for="description" class="form__label">Description</label>
-                    <input type="text" id="description" class="form__input" placeholder="This will be a..." required>
+                    <input type="text" id="description" class="form__input" formControlName="description" required>
                 </div>
-                <div class="form__group">
+                <!-- <div class="form__group">
                     <label for="duration" class="form__label">Duration</label>
-                    <input type="text" id="duration" class="form__input" placeholder="5" required>
+                    <input type="text" id="duration" class="form__input" formControlName="duration" required>
                 </div>
                 <div class="form__group">
                     <label for="summary" class="form__label">Summary</label>
-                    <input type="text" id="summary" class="form__input" placeholder="..." required>
+                    <input type="text" id="summary" class="form__input" formControlName="summary" required>
                 </div>
-                <div class="form__group">
-                    <!-- difficulty - select tag - easy, medium, difficult -->
-                </div>
+
+                <label for="difficulty">Level of difficulty</label>
+                <select name="difficulty" id="difficulty" class="tour-difficulty" formControlName="difficulty">
+                    <option value="">--Please choose an option--</option>
+                    <option value="easy">easy</option>
+                    <option value="medium">medium</option>
+                    <option value="difficult">difficult</option>
+                </select>
+
                 <div class="form__group">
                     <label for="price" class="form__label">Price</label>
-                    <input type="text" id="price" class="form__input" placeholder="465.45" required>
+                    <input type="text" id="price" class="form__input" formControlName="price" required>
                 </div>
+
                 <div class="form__group">
                     <label for="priceDiscount" class="form__label">Price discount</label>
-                    <input type="text" id="priceDiscount" class="form__input" placeholder="-10%" required>
+                    <input type="text" id="priceDiscount" class="form__input" formControlName="priceDiscount" required>
                 </div>
+
                 <div class="form__group">
                     <label for="maxGroupSize" class="form__label">Maximum Group Size</label>
-                    <input type="text" id="maxGroupSize" class="form__input" placeholder="12" required>
-                </div>
-                <div class="form__group">
-                    <input type="file" id="imageCovor" class="form__input" required>
-                </div>
+                    <input type="number" id="maxGroupSize" class="form__input" formControlName="maxGroupSize" required>
+                </div> -->
+
+                <!-- HANDLE IMAGE UPLOAD -->
+                <!-- <div class="form__group">
+                    <input type="file" id="imageCovor" class="form__input" formControlName="imageCover" required>
+                </div> -->
                 <!-- <div class="form__group">
                     <input type="file" id="images" class="form__input" required>
                 </div> -->
-                <div class="form__group">
-                    <!-- starting dates of the tour - array of strings - multiple dates selections -->
+
+                <!-- <div class="form__group">
+                    <label for="dates" class="form__label">Tour starting dates</label>
+                    <input type="date" id="dates" class="form__input" required>
                 </div>
-                <div class="form__group">
-                    <!-- starting location -->
-                    <!-- name of location -->
-                    <!-- coordinates - array of coords -->
-                    <!-- address -->
-                    <!-- description -->
-                </div>
-                <div class="form__group">
-                    <!-- locations -->
-                    <!-- array of locations -->
-                    <!-- name of location -->
-                    <!-- coordinates - array of coords -->
-                    <!-- address -->
-                    <!-- description -->
-                </div>
+
                 <div class="form__group">
                     <label for="guides" class="form__label">Guides</label>
-                    <input type="text" id="guides" class="form__input" placeholder="guides' names" required>
+                    <input type="text" id="guides" class="form__input" required>
                 </div>
-                
+
+                <ng-container formGroupName="startLocation">
+                    <div class="startLocation">
+                        <h4>Start location</h4>
+
+                        <div class="form__group">
+                            <label for="locationName" class="form__label">Location name</label>
+                            <input type="text" id="locationName" class="form__input" required>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="coordinates" class="form__label">Coordinates</label>
+                            <input type="text" id="coordinates" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="address" class="form__label">Address</label>
+                            <input type="text" id="address" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="description" class="form__label">Description</label>
+                            <input type="text" id="description" class="form__input" required>
+                        </div>
+                    </div>
+                </ng-container> -->
+
+                <h4>Locations</h4>
+
+                <div *ngFor="let location of locationsArray.controls; let i = index" formArrayName="locations">
+                    <ng-container [formGroupName]="i">
+                    <!-- <ng-container [formGroup]="$any(location)"> -->
+                        <div class="form__group">
+                            <label for="locationName" class="form__label">Location name</label>
+                            <input type="text" id="locationName" class="form__input" formControlName="locationName" required>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="coordinates" class="form__label">Coordinates</label>
+                            <input type="text" id="coordinates" class="form__input" formControlName="coordinates" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="address" class="form__label">Address</label>
+                            <input type="text" id="address" class="form__input" formControlName="address" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="description" class="form__label">Description</label>
+                            <input type="text" id="description" class="form__input" formControlName="description" required>
+                        </div>
+
+                    </ng-container>
+
+                    <button (click)="addLocationHandler()">+</button>
+                </div>
+
                 <div class="form__group">
-                    <button class="btn btn--green">Add tour</button>
+                    <button class="btn btn--red" routerLink="/tour">Cancel</button>
+                    <button class="btn btn--green" [disabled]="tourForm.invalid">Add tour</button>
                 </div>
             </form>
 

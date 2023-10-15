@@ -1,38 +1,40 @@
 import { IUser } from "./user";
 
 export interface ITour {
-        _id: string,
-        name: string,
-        slug: string,
-        ratingAverage: number,
-        ratingQuantity: number,
-        description: string,
-        duration: number,
-        summary: string,
-        difficulty: string[],
-        price: number,
-        priceDiscount: number,
-        maxGroupSize: number,
-        _ownerId: IUser,
-        imageCover: string,
-        images: string[],
-        createdAt: string,
-        startDates: string[],
-        secretTour: boolean,
+        _id: string, // no
+        name: string, // yes
+        slug: string, // no
+        ratingAverage: number, // no
+        ratingQuantity: number, // no
+        description: string, //yes
+        duration: number, // yes
+        summary: string, // yes
+        difficulty: string[], // yes
+        price: number, // yes
+        priceDiscount: number, // yes
+        maxGroupSize: number, // yes
+        _ownerId: IUser, // no
+        imageCover: string, // yes
+        images: string[], // yes
+        createdAt: string, // no
+        startDates: string[], // yes
+        secretTour: boolean, // no
 
+        // formGroup 
         startLocation: {
-          type: string,
-          coordinates: number[],
-          address: string,
-          description: string
+          type: string, // yes
+          coordinates: number[], // yes
+          address: string, // yes
+          description: string // yes
         },
 
+        // formGroup
         locations: [{ 
-          type: string, 
-          coordinates: number[],
-          description: string, 
-          day: number }]
+          type: string, // yes
+          coordinates: number[], // yes
+          description: string, // yes
+          day: number }] // no
         
-        guides: IUser[],
+        guides: IUser[], // ???
         __v: number
 }
