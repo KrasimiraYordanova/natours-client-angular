@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { emailValidator } from 'src/app/shared/validators/email-validator';
+import { matchingPasswordsGroupValidator } from 'src/app/shared/validators/match-password-group-validator';
 
 @Component({
   selector: 'app-register',
@@ -11,15 +13,19 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder) {}
 
   registerForm = this.fb.group({
-    name: ['test123'],
-    email: ['test123@gmail.com'],
-    difficulty: ['easy'],
+    name: ['', [Validators.required]],
+    email: ['', [Validators.required, emailValidator(['bg', 'com'])]],
+    // difficulty: [''],
     pass: this.fb.group({
-      password: ['123456'],
-      rePassword: ['123456']
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      rePassword: []
     }, {
-      validators: []
+      validators: [matchingPasswordsGroupValidator('password', 'rePassword')]
     })
   });
+
+  registerHandler() {
+    console.log(this.registerForm.value);
+  }
 
 }

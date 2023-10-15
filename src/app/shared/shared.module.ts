@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { EmailValidatorDirectiveDirective } from './validators/email-validator-directive.directive';
+import { MatchingPasswordsValidatorDirectiveDirective } from './validators/matching-passwords-validator-directive.directive';
 
 
 
@@ -9,13 +10,15 @@ import { EmailValidatorDirectiveDirective } from './validators/email-validator-d
   declarations: [
     SpinnerComponent,
     EmailValidatorDirectiveDirective,
+    MatchingPasswordsValidatorDirectiveDirective,
   ],
   imports: [
     CommonModule
   ],
   exports: [
     SpinnerComponent,
-    EmailValidatorDirectiveDirective
+    EmailValidatorDirectiveDirective,
+    MatchingPasswordsValidatorDirectiveDirective,
   ]
 })
 export class SharedModule { }
