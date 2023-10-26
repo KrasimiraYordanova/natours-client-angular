@@ -7,7 +7,7 @@
 
             <form class="form form--register" [formGroup]="registerForm" (ngSubmit)="registerHandler()">
                 <div class="form__group">
-                    <label for="name" class="form__label">Name</label>
+                    <label for="name" class="form__label">Full name</label>
                     <input type="text" id="name" class="form__input" formControlName="name" required>
                 </div>
                 <p *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.errors?.['required']">Full name is required</p>

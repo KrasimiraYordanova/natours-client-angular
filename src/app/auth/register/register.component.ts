@@ -26,6 +26,9 @@ export class RegisterComponent {
 
   registerHandler() {
     console.log(this.registerForm.value);
+    if(this.registerForm.invalid) return;
+
+    const { name, email,  pass: {password, rePassword} = {} } = this.registerForm.value;
   }
 
 }

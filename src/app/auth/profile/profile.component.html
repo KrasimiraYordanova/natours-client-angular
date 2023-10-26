@@ -30,7 +30,7 @@
             <button (click)="toggleEditMode()" type="button">Edit</button>
         </ng-template>
 
-        <ng-container *ngTemplateOutlet="editMode ? edit: save"></ng-container>
+        <ng-container *ngTemplateOutlet="editMode ? edit : save"></ng-container>
 
         <!-- <button (click)="editMode ? undefined : toggleEditMode()" [type]="editMode ? 'submit' : 'button'">
             <ng-container *ngIf="editMode">Save</ng-container>

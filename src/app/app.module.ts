@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
+import { authInterceptorProvider } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { MainComponent } from './main/main.component';
     CoreModule,
     UserModule,
   ],
-  providers: [],
+  providers: [authInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
