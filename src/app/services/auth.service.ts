@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { IUser } from '../shared/interfaces';
 import { HttpClient } from '@angular/common/http';
 
-import { environment } from '../../environments/environment'
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,11 +15,11 @@ export class AuthService {
     return this.user !== null;
   }
   
-  register(fullName: string, email: string, password: string, rePassword: string) {
-    return this.httpClient.post<any>(`${environment.apiURL}/auth/register`, {fullName, email, password, rePassword});
+  register(name: string, email: string, password: string, rePassword: string) {
+    return this.httpClient.post<IUser>(`/api/auth/register`, {name, email, password, rePassword});
   }
 
-  login(email: string, password: string, rePassword: string) {
-    return this.httpClient.post<any>(`${environment.apiURL}/auth/login`, {email, password, rePassword});
+  login(email: string, password: string) {
+    return this.httpClient.post<IUser>(`/api/auth/login`, {email, password});
   }
 }
