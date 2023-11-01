@@ -18,4 +18,6 @@ export class HeaderComponent {
   get user() {
     return this.authService.user;
   }
+
+  
 }

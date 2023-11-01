@@ -4,27 +4,31 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
-import { AuthModule } from './auth/auth.module';
+// import { AuthModule } from './auth/auth.module';
 import { TourModule } from './tour/tour.module';
 import { UserModule } from './user/user.module';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { authInterceptorProvider } from './auth.interceptor';
+import { SharedModule } from './shared/shared.module';
+import { AuthenticatingComponent } from './authenticating/authenticating.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    AuthenticatingComponent,
   ],
   imports: [
     BrowserModule,
-    AuthModule,
+    // AuthModule,
     TourModule,
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
     UserModule,
+    SharedModule
   ],
   providers: [authInterceptorProvider],
   bootstrap: [AppComponent]

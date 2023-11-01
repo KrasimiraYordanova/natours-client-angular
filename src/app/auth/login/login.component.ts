@@ -25,10 +25,9 @@ export class LoginComponent {
 
     const { email, password } = loginForm.value;
     this.authService.login(email!, password!).subscribe(user => {
-      this.authService.user = user;
+      // console.log(user);
       // saving user credentials to localStorage + set the cookie && settig the header with the token
       this.router.navigate(['/']);
     });
   }
-
 }

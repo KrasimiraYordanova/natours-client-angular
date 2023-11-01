@@ -23,8 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [
-    TourComponent,
-    NewTourComponent
+    TourComponent
   ]
 })
 export class TourModule { }

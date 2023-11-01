@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TourComponent } from './tour/tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
+import { AuthActivate } from '../shared/guards/auth.activate';
 
 const routes: Routes = [
     {
@@ -14,6 +15,7 @@ const routes: Routes = [
             },
             {
                 path: 'create',
+                canActivate: [AuthActivate],
                 component: NewTourComponent
             },
             {

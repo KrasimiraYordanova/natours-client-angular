@@ -10,38 +10,38 @@ import { AuthActivate } from '../shared/guards/auth.activate';
 const routes: Routes = [
   {
     path: 'auth/login',
+    // canActivate: [AuthActivate],
+    // data: {
+    //   title: 'Login',
+    //   authRequired: false
+    // },
     component: LoginComponent,
-    canActivate: [AuthActivate],
-    data: {
-      title: 'Login',
-      authRequired: false
-    }
   },
   {
     path: 'auth/register',
+    // canActivate: [AuthActivate],
+    // data: {
+    //   title: 'Register',
+    //   authRequired: false
+    // },
     component: RegisterComponent,
-    canActivate: [AuthActivate],
-    data: {
-      title: 'Register',
-      authRequired: false
-    }
   },
   {
     path: 'auth/profile',
-    component: ProfileComponent,
     canActivate: [AuthActivate],
     data: {
       title: 'Profile',
       authRequired: true
-    }
+    },
+    component: ProfileComponent,
   },
   {
     path: 'auth/logout',
-    component: LogoutComponent,
     canActivate: [AuthActivate],
     data: {
       authRequired: true
-    }
+    },
+    component: LogoutComponent,
   }
 ];
 

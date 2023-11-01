@@ -32,7 +32,6 @@ export class RegisterComponent {
 
     const { name, email,  pass: {password, rePassword} = {} } = this.registerForm.value;
     this.authService.register(name!, email!, password!, rePassword!).subscribe(user => {
-      this.authService.user = user;
       // saving user credentials to localStorage + set the cookie && settig the header with the token
       this.router.navigate(['/tour']);
     });
