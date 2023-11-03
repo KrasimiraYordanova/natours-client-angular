@@ -13,6 +13,8 @@
                     <li class="navigation__item"><a routerLink="/auth/register" class="navigation__link"><span class="navigation__span"></span>Register</a></li>
                 </ng-container>
                 <ng-container *ngIf="isLogged">
+                    {{isLogged}}
+                    {{ user?.fullName }}
                     <li class="navigation__item"><a routerLink="/tour/create" class="navigation__link"><span class="navigation__span"></span>Add tour</a></li>
                     <li class="navigation__item"><a routerLink="/auth/profile" class="navigation__link"><span class="navigation__span"></span>{{user?.fullName}}'s profile</a></li>
                     <li class="navigation__item"><a routerLink="/auth/logout" class="navigation__link"><span class="navigation__span"></span>Logout</a></li>

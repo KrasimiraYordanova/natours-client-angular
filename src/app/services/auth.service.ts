@@ -34,7 +34,7 @@ export class AuthService implements OnDestroy {
   }
 
   logout() {
-    return this.httpClient.post<void>('/api/auth/logout', {})
+    return this.httpClient.post<IUser>('/api/auth/logout', {})
     .pipe(tap(() => this.user$$.next(null)));
   }
 

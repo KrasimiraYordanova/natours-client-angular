@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { authInterceptorProvider } from './auth.interceptor';
 import { SharedModule } from './shared/shared.module';
-import { AuthenticatingComponent } from './authenticating/authenticating.component';
+import { AuthenticatingComponent } from './auth/authenticating/authenticating.component';
 
 @NgModule({
   declarations: [
