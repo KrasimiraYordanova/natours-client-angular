@@ -33,7 +33,8 @@ export interface ITour {
           type: string, // yes
           coordinates: number[], // yes
           description: string, // yes
-          day: number }] // no
+          day: number 
+        }] // no
         
         guides: IUser[], // ???
         __v: number

@@ -1,8 +1,14 @@
+$color-dark-gray: #323232;
+$color-light-white: #fafafa;
+$color-medium-gray: #a4a4a4;
+
 .footer {
-    background-color: #5c5c5c;
+    background-color: $color-dark-gray;
     padding: 1rem 0;
+    border-bottom-right-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
     font-size: 1.4rem;
-    color: #f4f4f4;
+    color: $color-light-white;
     text-align: center;
   
     &__logo-box{
@@ -30,10 +36,11 @@
       opacity: 0.8;
       font-size: 1rem;
     }
-  
-    &__copy {
-      color: gold;
+
+    &__weblink {
+      color: $color-medium-gray;
       text-transform: uppercase;
       display: inline-block;
+      text-decoration: none;
     }
   }

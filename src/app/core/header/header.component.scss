@@ -1,21 +1,22 @@
+$color-dark-gray: #323232;
+$color-light-white: #fafafa;
+
 .header {
-    background-color:#5c5c5c;
+    background-color: $color-dark-gray;
     padding: 1.5rem 2rem;
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
 }
 
 .navigation {
 
-    color: #f4f4f4;
+    color: $color-light-white;
 
     &__list {
         list-style: none;
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    &__item--logo {
-        font-size: 2rem;
     }
 
     &__items {
@@ -28,5 +29,10 @@
         text-transform: uppercase;
         color: inherit;
         font-weight: 200;
+        font-size: 1.2rem;
+
+        &--logo {
+            font-size: 2rem;
+        }
     }
 }
