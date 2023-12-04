@@ -12,6 +12,9 @@ import { TourDetailComponent } from './tour-detail/tour-detail.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ToursComponent
   ]
 })
 export class TourModule { }

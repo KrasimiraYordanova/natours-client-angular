@@ -13,10 +13,11 @@ export class TourService {
   constructor(private httpClient: HttpClient) { }
 
   allTours() {
-    return this.httpClient.get<ITour>(`${apiUrl}/tours`);
+    return this.httpClient.get<ITour[]>(`${apiUrl}/tours`);
   }
 
+  // last 9 tour created to be changed to most popular tours
   mostPopularTours() {
-    return this.httpClient.get<ITour>(`${apiUrl}/tours`);
+    return this.httpClient.get<ITour[]>(`${apiUrl}/tours?limit=9`);
   }
 }

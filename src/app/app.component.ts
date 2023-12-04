@@ -16,7 +16,7 @@ export class AppComponent {
     this.router.events.pipe(
       filter((e): e is RoutesRecognized => e instanceof RoutesRecognized),
       map(e => e),
-      tap(console.log)
+      // tap(console.log)
     ).subscribe(() => {});
   }
 }
