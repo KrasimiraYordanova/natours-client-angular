@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToursComponent } from './tours/tours.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -11,7 +12,8 @@ import { TourDetailComponent } from './tour-detail/tour-detail.component';
     TourDetailComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [
     ToursComponent

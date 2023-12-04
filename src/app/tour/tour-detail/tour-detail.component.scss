@@ -1,0 +1,101 @@
+$color-dark-gray: #323232;
+$color-black: #000000;
+$color-light-white: #fafafa;
+$color-white: #ffffff;
+
+// .card {
+//     position: relative;
+//     height: 60rem;
+
+//     flex: 1;
+//     display: flex;
+
+//     &__side {
+//         height: 60rem;
+//         flex: 1;
+//         transition: all 0.8s ease;
+
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         color: $color-light-white;
+
+//         border-radius: 0.3rem;
+//         // overflow: hidden; -> on the parent element, cause the image is overflowing the parent in these corners; this way we keep the corners round when the image is applied
+//         overflow: hidden;
+//         box-shadow: 0 1.5rem 2.5rem rgba($color-black, 0.3);
+
+//         &--front {
+//             background-color: $color-dark-gray;
+//         }
+//     }
+
+//     // FRONT SIDE STYLING
+//     &__picture {
+//         background-size: cover;
+//         width: 100%;
+//         height: 25rem;
+//         // blend mode
+//         background-blend-mode: screen;
+//         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+//         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+//         // manualy declaring the border-radius, because of the clip-path
+//         border-top-left-radius: 0.3rem;
+//         border-top-right-radius: 0.3rem;
+
+//         &--1 {
+//             background-image: linear-gradient(to right bottom,
+//                     $color-light-white,
+//                     $color-dark-gray ),
+//                 //   url(../images/img--2.jpg);
+//         }
+//     }
+
+//     &__heading {
+//         font-size: 2.8rem;
+//         font-weight: 300;
+//         text-align: right;
+//         text-transform: uppercase;
+//         color: $color-white;
+//         position: absolute;
+//         top: 17rem;
+//         right: 2rem;
+//         width: 70%;
+//     }
+
+//     &__heading-span {
+//         padding: 0.7rem 2rem;
+//         // box-decoration-break: clone; creates padding on a breaking header
+//         -webkit-box-decoration-break: clone;
+//         box-decoration-break: clone;
+
+//         & {
+//             background-image: linear-gradient(to right bottom,
+//                     rgba($color-light-white, 0.85),
+//                     rgba($color-dark-gray, 0.85));
+//         }
+//     }
+
+//     &__details {
+//         padding: 5rem 3rem;
+
+//         &--list {
+//             list-style: none;
+//             width: 80%;
+//             margin: 0 auto;
+
+//             li {
+//                 text-align: center;
+//                 font-size: 1.5rem;
+//                 padding: 1rem;
+
+//                 &:not(:last-child) {
+//                     border-bottom: 1px solid $color-dark-gray;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
