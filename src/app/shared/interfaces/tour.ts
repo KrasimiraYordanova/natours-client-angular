@@ -9,7 +9,7 @@ export interface ITour {
         description: string, //yes
         duration: number, // yes
         summary: string, // yes
-        difficulty: string[], // yes
+        difficulty: string, // yes
         price: number, // yes
         priceDiscount: number, // yes
         maxGroupSize: number, // yes
