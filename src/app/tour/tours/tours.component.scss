@@ -1,5 +1,18 @@
-.container-cards {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: 10rem;
+$color-dark-gray: #323232;
+$color-light-grey: #f8f8f8;
+
+.heading-secondary {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.section-tours {
+    background-color: $color-light-grey;
+
+    &__tours {
+        display: grid;
+        grid-template-rows: repeat(2, 15rem);
+        grid-template-columns: repeat(2, 35rem) 1fr;
+        grid-gap: 5rem;
+    }
 }
