@@ -1,30 +1,92 @@
-$color-dark-gray: #323232;
+$color-dark-grey: #323232;
 $color-black: #000000;
 $color-white: #ffffff;
 $color-light-white: #fafafa;
 $color-light-grey: #f8f8f8;
 $color-medium-grey: #acacac;
 
+$color-golden: #cfad17;
 
 
 .card {
-    background-color: $color-medium-grey;
+    background-color: $color-white;
     border-radius: .2rem;
-    padding: 2rem;
+    // see -> &__picture comment
+    overflow: hidden;
+    box-shadow: 0.1rem 0.8rem 1.5rem rgba($color-black, .15);
+    position: relative;
 
-    &__heading {
-        margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    &__picture {
+        // border radius doesn not work after image application 
+        // to fix this on the parent element where the radius is defined 
+        // we set "overflow: hidden", so the part of the image the go outside got hidden
+        background-image:
+            linear-gradient(to right bottom, $color-golden, $color-black),
+            url(../../../assets/images/winter.jpg);
+        background-blend-mode: hue;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        background-position: bottom;
+        height: 27rem;
     }
 
-    &__heading-span {}
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: $color-white;
+
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        text-align: right;
+    }
+
+    &__heading-span {
+        background-image: linear-gradient(to right bottom, rgba($color-golden, .85), rgba($color-dark-grey, .85));
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
 
     &__details {
 
+        padding: 3rem 0 3rem 0;
+
         &--list {
             list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-rows: repeat(1, minmax(3rem, min-content));
+            grid-template-columns: repeat(2, minmax(12rem, 20rem));
+            grid-auto-rows: 3rem;
+            grid-column-gap: 4rem;
         }
+
         &--list-item {}
     }
+}
 
+.btn {
+    border: none;
+    padding: 1.5rem 3.2rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.6rem;
+    width: 50%;
+    margin: 0 auto 2rem auto;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba($color-black, .15);
+
+    &--white {
+        background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
+        // background-color: $color-light-white;
+        color: inherit;
+        border-radius: 5rem;
+    }
     
 }
