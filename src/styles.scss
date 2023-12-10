@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+$color-light-grey: #f8f8f8;
 $color-dark-gray: #323232;
 $color-light-white: #fafafa;
 
@@ -16,13 +17,16 @@ html {
   font-size: 62.5%;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  height: 100%;
 }
 
 body {
-    // position: relative;
-    min-height: 100vh;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
     
-    line-height: 1.6;
+    line-height: 1.3;
     font-weight: 300;
     font-size: 1.3rem;
     font-family: 'Nunito', sans-serif;
@@ -30,11 +34,7 @@ body {
     padding: 2rem;
 }
 
-
-// .heading-primary {
-//   font-size: 3rem;
-// }
-
-// .heading-secondary {
-//   font-size: 2.3rem;
-// }
+main {
+  background-color: $color-light-grey;
+  height: 100%;
+}

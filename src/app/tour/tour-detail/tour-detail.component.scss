@@ -3,10 +3,28 @@ $color-black: #000000;
 $color-white: #ffffff;
 $color-light-white: #fafafa;
 $color-light-grey: #f8f8f8;
+$color-medium-grey: #acacac;
 
 
 
 .card {
-    background-color: orangered;
-    height: 44rem;
+    background-color: $color-medium-grey;
+    border-radius: .2rem;
+    padding: 2rem;
+
+    &__heading {
+        margin-bottom: 2rem;
+    }
+
+    &__heading-span {}
+
+    &__details {
+
+        &--list {
+            list-style: none;
+        }
+        &--list-item {}
+    }
+
+    
 }

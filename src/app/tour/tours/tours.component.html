@@ -1,12 +1,17 @@
-<app-loader *ngIf="!tours"></app-loader>
+<main>
+    <section class="main-section">
 
+        <app-loader *ngIf="!tours"></app-loader>
 
-<section class="section-tours">
-    <div>
-        <h2 class="heading-secondary">Most popular tours</h2>
-    </div>
+        <div class="main-section__content">
+            <div class="headings">
+                <h2 class="headings__secondary">Most popular tours</h2>
+            </div>
 
-    <div class="section-tours__tours">
-        <app-tour-detail *ngFor="let tour of tours; let i = index" [tour]="tour"></app-tour-detail>
-    </div>
-</section>
+            <div class="tours">
+                <app-tour-detail *ngFor="let tour of tours; let i = index" [tour]="tour"></app-tour-detail>
+            </div>
+        </div>
+
+    </section>
+</main>

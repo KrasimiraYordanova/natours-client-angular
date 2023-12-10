@@ -1,14 +1,14 @@
 <div class="card">
-    <div class="card__side card__side--front">
-        <h4 class="card__heading">
-            <span class="card__heading-span">{{tour.name}}</span>
-        </h4>
-        <div class="card__details">
-            <ul class="card__details--list">
-                <li>{{tour.price}}</li>
-                <li>{{tour.maxGroupSize}}</li>
-                <li>{{tour.difficulty}}</li>
-            </ul>
-        </div>
+
+    <h4 class="card__heading">
+        <span class="card__heading-span">{{tour.name}}</span>
+    </h4>
+    <div class="card__details">
+        <ul class="card__details--list">
+            <li class="card__details--list-item">Price: {{tour.price}}</li>
+            <li class="card__details--list-item">Max group size: {{tour.maxGroupSize}}</li>
+            <li class="card__details--list-item">Difficulty: {{tour.difficulty}}</li>
+        </ul>
     </div>
+
 </div>
