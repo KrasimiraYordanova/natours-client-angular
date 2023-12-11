@@ -1,1 +1,40 @@
-<p>login works!</p>
+<main>
+
+        <div class="form-container">
+            <form class="login">
+
+                <!-- <fieldset> -->
+                    <h2>Login Form</h2>
+
+                    <p class="field">
+                        <label for="email">Email</label>
+                        <input class="input-error" type="email" name="email" id="email">
+                    </p>
+                    <!-- <p class="error">
+                        Email is required!
+                    </p>
+                    <p class="error">
+                        Email is not valid!
+                    </p> -->
+
+                    <p class="field field-icon">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                    </p>
+                    <!-- <p class="error">
+                        Password is required!
+                    </p>
+                    <p class="error">
+                        Password must be at least 4 characters!
+                    </p> -->
+
+                    <button disabled class="btn btn--white">Login</button>
+
+                    <p class="text-center">You want an account? <a routerLink="/auth/register"
+                            class="btn--nutral">Register</a></p>
+
+                <!-- </fieldset> -->
+            </form>
+        </div>
+
+</main>

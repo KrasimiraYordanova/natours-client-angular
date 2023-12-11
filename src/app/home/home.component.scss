@@ -1,0 +1,15 @@
+$color-dark-gray: #323232;
+$color-light-grey: #f8f8f8;
+
+.main-section {
+}
+
+.headings {
+    text-align: center;
+    padding: 5rem 0 3rem 0;
+
+    &__secondary {
+        font-size: 2.5rem;
+        text-transform: uppercase;
+    }
+}

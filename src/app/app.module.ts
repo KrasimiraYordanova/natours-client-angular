@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TourModule } from './tour/tour.module';
 import { HomeComponent } from './home/home.component';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -17,9 +18,10 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
   ],
   imports: [
-    BrowserModule,
+    AuthModule,
     TourModule,
     AppRoutingModule,
+    BrowserModule,
     HttpClientModule,
     CoreModule,
     SharedModule

@@ -16,7 +16,7 @@ export class ToursComponent implements OnInit {
   ngOnInit(): void {
     this.tourService.allTours().subscribe({
       next: (tours) => {
-        console.log(tours);
+        // console.log(tours);
         this.tours = tours;
       },
       error: (err) => {

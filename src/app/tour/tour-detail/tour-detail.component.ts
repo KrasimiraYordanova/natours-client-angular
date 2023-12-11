@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ITour } from 'src/app/shared/interfaces';
 
 @Component({
@@ -6,12 +6,19 @@ import { ITour } from 'src/app/shared/interfaces';
   templateUrl: './tour-detail.component.html',
   styleUrls: ['./tour-detail.component.scss']
 })
-export class TourDetailComponent {
+export class TourDetailComponent implements OnInit{
 
   @Input()
   tour!: ITour;
 
-  @Input()
-  name: string | undefined;
+  backgroundImageUrl: string | null = null;
 
+  ngOnInit(): void {
+    // console.log(this.tour);
+    this.backgroundImageUrl = this.tour.imageCover;
+  }
+
+  getBackgroundImageUrl(): string { 
+    return `url(${this.backgroundImageUrl})` 
+  } 
 }
