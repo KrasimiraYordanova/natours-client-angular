@@ -5,13 +5,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AuthGuard } from '../shared/guards/auth.guard';
+import { authGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'auth/register',
     component: RegisterComponent,
-    canActivate: [AuthGuard],
+    canActivate: [authGuard()],
     data: {
       title: "Nature's tours | register",
       loginRequired: false
@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: 'auth/login',
     component: LoginComponent,
-    canActivate: [AuthGuard],
+    canActivate: [authGuard()],
     data: {
       title: "Nature's tours | login",
       loginRequired: false
@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: 'auth/profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard],
+    canActivate: [authGuard()],
     data: {
       title: "Nature's tours | profile",
       loginRequired: true
@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: 'auth/logout',
     component: LogoutComponent,
-    canActivate: [AuthGuard],
+    canActivate: [authGuard()],
     data: {
       title: "Nature's tours | logout",
       loginRequired: true
