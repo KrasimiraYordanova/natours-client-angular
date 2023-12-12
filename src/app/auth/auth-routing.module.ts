@@ -5,23 +5,44 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'auth/register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: "Nature's tours | register",
+      loginRequired: false
+    }
   },
   {
     path: 'auth/login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: "Nature's tours | login",
+      loginRequired: false
+    }
   },
   {
     path: 'auth/profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: "Nature's tours | profile",
+      loginRequired: true
+    }
   },
   {
     path: 'auth/logout',
-    component: LogoutComponent
+    component: LogoutComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: "Nature's tours | logout",
+      loginRequired: true
+    }
   }
 ];
 

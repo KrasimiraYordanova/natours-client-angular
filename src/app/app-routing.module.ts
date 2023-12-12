@@ -8,11 +8,17 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomeComponent
+    component: HomeComponent,
+    data: {
+      title: "Nature's tours"
+    }
   },
   {
     path: 'not-found',
-    component: PageNotFoundComponent
+    component: PageNotFoundComponent,
+    data: {
+      title: "Nature's tours | not found page"
+    }
   },
   {
     path: '**',

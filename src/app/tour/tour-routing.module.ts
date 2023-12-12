@@ -3,15 +3,37 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ToursComponent } from './tours/tours.component';
 import { CreateTourComponent } from './create-tour/create-tour.component';
+import { TourInfoComponent } from './tour-info/tour-info.component';
 
 const routes: Routes = [
   {
     path: 'tours',
-    component: ToursComponent
+    component: ToursComponent,
+    data: {
+        title: "Nature's tours | all tours",
+        loginRequired: false
+      }
   },
   {
-    path: 'tour/create',
-    component: CreateTourComponent
+    path: 'tour',
+    children: [
+        {
+            path: 'create',
+            component: CreateTourComponent,
+            data: {
+                title: "Nature's tours | create tour",
+                loginRequired: true
+              }
+          },
+          {
+            path: 'info/:id',
+            component: TourInfoComponent,
+            data: {
+                title: "Nature's tours | tour info",
+                loginRequired: false
+              }
+          },
+    ]
   },
 ];
 
