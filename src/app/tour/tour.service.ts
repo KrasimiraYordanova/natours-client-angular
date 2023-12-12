@@ -16,6 +16,10 @@ export class TourService {
     return this.httpClient.get<ITour[]>(`${apiUrl}/tours`);
   }
 
+  tour(id: string) {
+    return this.httpClient.get<ITour>(`${apiUrl}/tours/${id}`);
+  } 
+
   // last 9 tour created to be changed to most popular tours
   mostPopularTours() {
     return this.httpClient.get<ITour[]>(`${apiUrl}/tours?limit=9`);
