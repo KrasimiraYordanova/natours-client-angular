@@ -1,39 +1,44 @@
 <main>
 
         <div class="form-container">
-            <form class="login">
+            <form class="login" #formLogin="ngForm" (ngSubmit)="loginHandler(formLogin)">
 
-                <!-- <fieldset> -->
                     <h2>Login Form</h2>
 
+                    <!-- EMAIL -->
                     <p class="field">
                         <label for="email">Email</label>
-                        <input class="input-error" type="email" name="email" id="email">
+                        <input class="input-error" type="email" #emailInput="ngModel" ngModel name="email" id="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                     </p>
-                    <!-- <p class="error">
+                    <!-- EMAIL ERRORS -->
+                    <ng-container *ngIf="(emailInput.invalid && emailInput.touched) || emailInput.dirty">
+                    <p class="error" *ngIf="emailInput.errors?.['required']">
                         Email is required!
                     </p>
-                    <p class="error">
-                        Email is not valid!
-                    </p> -->
+                    <p class="error" *ngIf="emailInput.errors?.['pattern']">
+                        Email is invalid!
+                    </p>
+                </ng-container>
 
+                    <!-- PASSWORD -->
                     <p class="field field-icon">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password">
+                        <input type="password" #passwordInput="ngModel" ngModel [minlength]="8" name="password" id="password" required>
                     </p>
-                    <!-- <p class="error">
+                    <!-- PASSWORD ERRORS -->
+                    <ng-container *ngIf="(passwordInput.invalid && passwordInput.touched) || passwordInput.dirty">
+                    <p class="error" *ngIf="passwordInput.errors?.['required']">
                         Password is required!
                     </p>
-                    <p class="error">
-                        Password must be at least 4 characters!
-                    </p> -->
+                    <p class="error" *ngIf="passwordInput.errors?.['minlength']">
+                        Password must be at least 8 characters!
+                    </p>
+                </ng-container>
 
-                    <button class="btn btn--white" (click)="loginHandler()" >Login</button>
+                    <button class="btn btn--white" [disabled]="formLogin.invalid">Login</button>
 
-                    <p class="text-center">You want an account? <a routerLink="/auth/register"
-                            class="btn--nutral">Register</a></p>
+                    <p class="text-center">You want an account? <a routerLink="/auth/register" class="btn--nutral">Register</a></p>
 
-                <!-- </fieldset> -->
             </form>
         </div>
 

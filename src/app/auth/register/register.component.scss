@@ -1,74 +1,84 @@
+$color-dark-grey: #323232;
+$color-black: #000000;
+$color-white: #ffffff;
+$color-light-white: #fafafa;
+$color-light-grey: #f8f8f8;
+$color-medium-grey: #acacac;
+$color-medium-light-grey: #e1e1e1;
+
+$color-golden: #cfad17;
+$color-error: #d42d1b;
+
+
+.btn {
+    border: none;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.6rem;
+    width: 50%;
+    margin: 0 auto 2rem auto;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba($color-black, .15);
+    cursor: pointer;
+
+    &--white {
+        background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
+        // background-color: $color-light-white;
+        color: inherit;
+        border-radius: 5rem;
+    }
+
+    &--nutral {
+        color: inherit;
+        border-radius: 5rem;
+    }
+
+}
+
+form button {
+    margin-top: 5rem;
+}
+
+.form-container {
+    background-color: $color-white;
+    width: 50%;
+    margin: auto;
+    padding: 9rem;
+    border-radius: 5rem;
+}
+
+
 /*login register forms  */
 
-form.login, form.register {
-    width: 40%;
-    margin: 2em auto 0;
+
+.login {
+    margin: 0 auto;
     text-align: center;
-}
+    background-color: $color-light-grey;
 
-.login fieldset, .register fieldset {
     border-radius: 0.3em;
-    padding: 0.8em;
-    background-color: #ffffff;
+    padding: 4rem 5em;
 }
 
-.login h2, .register h2 {
-    padding-top: 0;
-    border-bottom: none;
+.field {
+    display: flex;
+    flex-direction: column;
+    // align-items: start;
+    gap: 0.5rem;
 }
 
-.login p, .register p {
+.login p,
+.register p {
     padding-bottom: 0;
     padding-top: 1.5rem;
 }
 
-.login input, .register input {
+.login input,
+.register input {
     flex: 0 1 100%;
-    border: 1px solid;
-    padding: 0.3em;
-    border-left: 0.3em solid green;
-    border-top-right-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
-}
-
-.login select, .register select {
-    border-color: black;
-}
-
-.login button, .register button {
-    color: white;
     border: none;
-    border-radius: 0.3em;
-    padding: 0.6em 1.2em;
-    margin-top: 1.5rem;
-    width: 60%;
-    outline: none;
-}
-
-.login i, .register i {
-    border: 1px solid;
-    border-right: none;
-    padding: 0.55em;
-    border-top-left-radius: 0.3em;
-    border-bottom-left-radius: 0.3em;
-    background-color: #e9ecef;
-}
-
-.login a, .register a {
-    color: #007bff;
-}
-
-.login a:hover, .register a:hover {
-    cursor: pointer;
-}
-
-.register .tel {
-    padding-right: 0.8em;
-}
-
-.login .field, .register .field {
-    display: flex;
-    padding-bottom: 0;
+    padding: 0.5em;
+    border-radius: 0.3rem;
 }
 
 /* errors  */
@@ -76,10 +86,10 @@ form.login, form.register {
 p.error {
     text-align: left;
     border-radius: 0.3em;
-    color: red;
+    color: $color-error;
     padding-top: 0;
 }
 
 .input-error {
-    border-left-color: red;
+    border-left-color: $color-error;
 }

@@ -52,7 +52,7 @@ form button {
 
 
 .login {
-    margin: 0 auto;
+    // margin: 0 auto;
     text-align: center;
     background-color: $color-light-grey;
 
@@ -60,21 +60,22 @@ form button {
     padding: 4rem 5em;
 }
 
+label{
+    text-align: left;
+}
+
 .field {
     display: flex;
     flex-direction: column;
-    // align-items: start;
     gap: 0.5rem;
 }
 
-.login p,
-.register p {
+.login p {
     padding-bottom: 0;
     padding-top: 1.5rem;
 }
 
-.login input,
-.register input {
+.login input {
     flex: 0 1 100%;
     border: none;
     padding: 0.5em;

@@ -25,7 +25,7 @@ $color-golden: #cfad17;
         // we set "overflow: hidden", so the part of the image the go outside got hidden
         background-image:
             linear-gradient(to right bottom, $color-golden, $color-black),
-            url(../../../assets/images/winter.jpg);
+            url(../../../../assets/images/winter.jpg);
         background-blend-mode: hue;
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
