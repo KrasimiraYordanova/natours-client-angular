@@ -26,6 +26,17 @@ export class RegisterComponent {
 
   registerHandler() {
     console.log(this.formRegister.value);
+    if(this.formRegister.invalid) return;
+    const { name, email, pass: {password, rePassword} = {} } = this.formRegister.value;
+    this.authService.register(name!, email!, password!, rePassword!)
+    .subscribe(user => {
+      console.log(user);
+      this.authService.user = user;
+      this.router.navigate(['/tours']);
+    });
+    
   }
-
 }
+
+
+// saving user credentials to localStorage + set the cookie && settig the header with the token

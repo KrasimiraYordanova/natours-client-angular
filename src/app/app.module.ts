@@ -11,6 +11,8 @@ import { TourModule } from './tour/tour.module';
 import { HomeComponent } from './home/home.component';
 import { AuthModule } from './auth/auth.module';
 
+import { AuthInterceptorProvider } from './auth.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AuthModule } from './auth/auth.module';
     CoreModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    AuthInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

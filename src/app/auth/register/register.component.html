@@ -24,11 +24,11 @@
                 <input class="input-error" type="email" formControlName="email" id="email">
             </p>
             <ng-container
-                *ngIf="(formRegister.get('email')?.invalid && formRegister.get('email')?.touched) || formRegister.get('email')?.dirty">
-                <p class="error" *ngIf="formRegister.get('name')?.errors?.['required']">
+                *ngIf="(formRegister.get('email')?.invalid && formRegister.get('email')?.touched)">
+                <p class="error" *ngIf="formRegister.get('email')?.errors?.['required']">
                     Email is required!
                 </p>
-                <p class="error" *ngIf="formRegister.get('name')?.errors?.['pattern']">
+                <p class="error" *ngIf="formRegister.get('email')?.errors?.['pattern']">
                     Email is invalid!
                 </p>
             </ng-container>
@@ -55,9 +55,9 @@
                     Passwords don't match!
                 </p>
             </ng-container>
-            {{ formRegister.value | json }}
+            <!-- {{ formRegister.value | json }} -->
             <!-- {{ formRegister.errors | json }} -->
-            {{ formRegister.get('pass')?.errors | json }}
+            <!-- {{ formRegister.get('pass')?.errors | json }} -->
 
 
             <button class="btn btn--white" [disabled]="formRegister.invalid">Create account</button>

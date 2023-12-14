@@ -18,11 +18,16 @@ export class LoginComponent implements OnInit {
   }
 
   loginHandler(formLogin: NgForm) {
-    if(formLogin.invalid) return;
 
     const returnUrl = this.activatedRoute.snapshot.queryParams['currentUrl'] || '/';
-    console.log(this.activatedRoute);
-    this.router.navigate([returnUrl]); 
+    if(formLogin.invalid) return;
+    const { email, password } = formLogin.value;
+    this.authService.login(email!, password!)
+    .subscribe(user => {
+      console.log(user);
+      this.authService.user = user;
+      this.router.navigate([returnUrl]); 
+    });
   }
 
 }

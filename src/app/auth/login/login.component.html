@@ -8,16 +8,16 @@
                     <!-- EMAIL -->
                     <p class="field">
                         <label for="email">Email</label>
-                        <input class="input-error" type="email" #emailInput="ngModel" ngModel name="email" id="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        <input class="input-error" type="email" #emailInput="ngModel" ngModel name="email" id="email" required>
                     </p>
                     <!-- EMAIL ERRORS -->
                     <ng-container *ngIf="(emailInput.invalid && emailInput.touched) || emailInput.dirty">
                     <p class="error" *ngIf="emailInput.errors?.['required']">
                         Email is required!
                     </p>
-                    <p class="error" *ngIf="emailInput.errors?.['pattern']">
+                    <!-- <p class="error" *ngIf="emailInput.errors?.['pattern']">
                         Email is invalid!
-                    </p>
+                    </p> -->
                 </ng-container>
 
                     <!-- PASSWORD -->
