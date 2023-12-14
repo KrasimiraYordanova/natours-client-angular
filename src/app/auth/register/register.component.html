@@ -9,41 +9,49 @@
                 <label for="name">Full Name</label>
                 <input class="input-error" type="name" formControlName="name" id="name">
             </p>
-            <p class="error">
-                Name is required!
-            </p>
-            <p class="error">
-                Name should be at least 2 characters long
-            </p>
+            <ng-container
+                *ngIf="(formRegister.get('name')?.invalid && formRegister.get('name')?.touched) || formRegister.get('name')?.dirty">
+                <p class="error" *ngIf="formRegister.get('name')?.errors?.['required']">
+                    Name is required!
+                </p>
+                <p class="error" *ngIf="formRegister.get('name')?.errors?.['minlength']">
+                    Name should be at least 2 characters long
+                </p>
+            </ng-container>
 
             <p class="field">
                 <label for="email">Email</label>
                 <input class="input-error" type="email" formControlName="email" id="email">
             </p>
-            <p class="error">
-                Email is required!
-            </p>
-            <p class="error">
-                Email is invalid!
-            </p>
+            <ng-container
+                *ngIf="(formRegister.get('email')?.invalid && formRegister.get('email')?.touched) || formRegister.get('email')?.dirty">
+                <p class="error" *ngIf="formRegister.get('name')?.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="error" *ngIf="formRegister.get('name')?.errors?.['pattern']">
+                    Email is invalid!
+                </p>
+            </ng-container>
 
             <ng-container formGroupName="pass">
                 <p class="field">
                     <label for="password">Password</label>
                     <input type="password" formControlName="password" id="password">
                 </p>
-                <p class="error">
-                    Password is required!
-                </p>
-                <p class="error">
-                    Password must be at least 8 characters!
-                </p>
+                <ng-container *ngIf="formRegister.get('pass')?.get('password')?.invalid && formRegister.get('pass')?.get('password')?.touched">
+                    <p class="error" *ngIf="formRegister.get('pass')?.get('password')?.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <p class="error" *ngIf="formRegister.get('pass')?.get('password')?.errors?.['minlength']">
+                        Password must be at least 8 characters!
+                    </p>
+                </ng-container>
 
                 <p class="field">
                     <label for="rePassword">Repassword</label>
                     <input type="password" formControlName="rePassword" id="rePassword">
                 </p>
-                <p class="error">
+                <p class="error" *ngIf="formRegister.get('pass')?.errors?.['matchingPasswordsValidator'] && formRegister.get('pass')?.get('rePassword')?.touched">
                     Passwords don't match!
                 </p>
             </ng-container>
@@ -52,7 +60,7 @@
             {{ formRegister.get('pass')?.errors | json }}
 
 
-            <button class="btn btn--white">Create account</button>
+            <button class="btn btn--white" [disabled]="formRegister.invalid">Create account</button>
 
             <p class="text-center">Already a user? <a routerLink="/auth/login" class="btn--nutral">Login</a></p>
 
