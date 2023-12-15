@@ -12,12 +12,14 @@ import { HomeComponent } from './home/home.component';
 import { AuthModule } from './auth/auth.module';
 
 import { AuthInterceptorProvider } from './auth.interceptor';
+import { AuthenticatingComponent } from './authenticating/authenticating.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    AuthenticatingComponent,
   ],
   imports: [
     AuthModule,

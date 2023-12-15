@@ -44,17 +44,3 @@ export class ProfileComponent  implements OnInit{
   }
 
 }
-
-
-// profileHandler(): void {
-//   this.isSubmitted = true;
-//   if(this.profileForm.invalid) return;
-//   const { name, email } = this.profileForm.value;
-//   this.authService.user = {
-//     _id: "2",
-//     fullName: name,
-//     email
-//   } as any;
-//   this.toggleEditMode();
-//   console.log(this.profileForm.value)
-// }

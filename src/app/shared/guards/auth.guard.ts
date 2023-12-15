@@ -1,6 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { Observable } from "rxjs";
+import { Observable, map, take } from "rxjs";
 import { AuthService } from "src/app/service/auth.service";
 
 
@@ -8,14 +8,19 @@ import { CanActivateFn } from '@angular/router';
 
 export function authGuard(): CanActivateFn {
   return (route, state) => {
-    const authService:  AuthService = inject(AuthService);
+    const authService: AuthService = inject(AuthService);
     const router: Router = inject(Router);
-    
-    const loginRequired = route.data['loginRequired'];
-    if(loginRequired === undefined || authService.isLogged === loginRequired) return true;
-    
-    const currentUrl = route.url.map(url => url.path).join('/');
-    return router.createUrlTree([`/auth/login`], {queryParams: { currentUrl}});
+
+    return authService.user$.pipe(
+      take(1),
+      map(user => {
+        const loginRequired = route.data['loginRequired'];
+        if (loginRequired === undefined || !!user === loginRequired) return true;
+
+        const currentUrl = route.url.map(url => url.path).join('/');
+        return !!user ? router.createUrlTree(['/tours']) : router.createUrlTree([`/auth/login`], { queryParams: { currentUrl } });
+      })
+    )
   }
 };
 
