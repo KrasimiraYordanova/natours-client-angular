@@ -10,10 +10,10 @@ const routes: Routes = [
   {
     path: 'tours',
     component: ToursComponent,
-    canActivate: [authGuard()],
+    // canActivate: [authGuard()],
     data: {
         title: "Nature's tours | all tours",
-        loginRequired: false
+        // loginRequired: false
       }
   },
   {
@@ -29,12 +29,12 @@ const routes: Routes = [
               }
           },
           {
-            path: 'info/:id',
+            path: ':id',
             component: TourInfoComponent,
-            canActivate: [authGuard()],
+            // canActivate: [authGuard()],
             data: {
-                title: "Nature's tours | tour info",
-                loginRequired: false
+                title: "Nature's tours | tour detail",
+                // loginRequired: false
               }
           },
     ]

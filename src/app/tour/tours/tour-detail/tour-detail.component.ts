@@ -14,8 +14,8 @@ export class TourDetailComponent implements OnInit{
   backgroundImageUrl: string | null = null;
 
   ngOnInit(): void {
-    // console.log(this.tour);
-    this.backgroundImageUrl = this.tour.imageCover;
+    console.log(this.tour);
+    // this.backgroundImageUrl = this.tour.imageCover;
   }
 
   getBackgroundImageUrl(): string { 

@@ -2,6 +2,7 @@
 
     <div class="card__picture" [style.backgroundImageUrl]="getBackgroundImageUrl()">
         <!-- &nbsp; -->
+        <img src="" alt="">
     </div>
 
     <h4 class="card__heading">
@@ -16,6 +17,6 @@
         </ul>
     </div>
 
-    <a href="#" class="btn btn--white">Tour details</a>
+    <a routerLink="/tour/{{tour._id}}" class="btn btn--white">Tour details</a>
 
 </div>

@@ -9,14 +9,15 @@ import { ITour } from 'src/app/shared/interfaces';
 })
 export class ToursComponent implements OnInit {
 
-  constructor(private tourService: TourService) {}
+  constructor(private tourService: TourService) { }
 
   tours: ITour[] | null = null;
 
   ngOnInit(): void {
+
     this.tourService.allTours().subscribe({
       next: (tours) => {
-        // console.log(tours);
+        console.log(tours);
         this.tours = tours;
       },
       error: (err) => {
@@ -24,5 +25,4 @@ export class ToursComponent implements OnInit {
       }
     })
   }
-
 }
