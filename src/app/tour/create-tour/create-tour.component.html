@@ -166,7 +166,7 @@
                 </ng-container>
             </ng-container>
 
-            <h3>Add Course Lessons:</h3>
+            <h3>Add Location:</h3>
             <div class="add-location-form">
                 <ng-container formArrayName="locations">
                     <ng-container *ngFor="let locationForm of locations.controls; let i = index">
@@ -186,6 +186,27 @@
                 </ng-container>
 
                 <p (click)="addLocation()">+</p>
+
+            </div>
+            <h3>Add guide:</h3>
+            <div class="add-guides-form">
+                <ng-container formArrayName="guides">
+                    <ng-container *ngFor="let guideForm of guides.controls; let i = index">
+                        <div class="guide-form-row" [formGroupName]="i">
+                            <p>
+                                <input type="text" formControlName="name" id="guide" required>
+                            </p>
+                            <select formControlName="role">
+                                <option value="lead guide">Lead guide</option>
+                                <option value="guide">Guide</option>
+                            </select>
+
+                            <p class="delete-btn" (click)="deleteGuide(i)">-</p>
+                        </div>
+                    </ng-container>
+                </ng-container>
+
+                <p (click)="addGuide()">+</p>
 
             </div>
 

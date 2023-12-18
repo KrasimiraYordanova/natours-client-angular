@@ -26,13 +26,17 @@ export class CreateTourComponent {
   }, {
     validators: []
   }),
-  locations: this.fb.array([])
+  locations: this.fb.array([]),
+  guides: this.fb.array([])
   })
 
   constructor(private fb: FormBuilder, private router: Router, private tourService: TourService) { }
 
   get locations() {
     return this.tourForm.controls["locations"] as FormArray;
+  }
+  get guides() {
+    return this.tourForm.controls["guides"] as FormArray;
   }
 
   addLocation() {
@@ -47,7 +51,20 @@ export class CreateTourComponent {
 
   deleteLocation(locationIndex: number) {
     this.locations.removeAt(locationIndex);
-}
+  }
+
+  addGuide() {
+    const guideForm = this.fb.group({
+      name: ['', Validators.required],
+      role: ['', Validators.required]
+    });
+
+    this.guides.push(guideForm);
+  }
+
+  deleteGuide(guideIndex: number) {
+    this.guides.removeAt(guideIndex);
+  }
 
   tourHandler() {
     console.log(this.tourForm.value);
