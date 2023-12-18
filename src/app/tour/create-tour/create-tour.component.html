@@ -1,1 +1,224 @@
-<p>create-tour works!</p>
+<main>
+
+    <div class="form-container">
+        <form class="login" [formGroup]="tourForm" (ngSubmit)="tourHandler()">
+
+            <h2>Create a Tour</h2>
+
+            <!-- NAME -->
+            <p class="field">
+                <label for="name">Full Name</label>
+                <input class="input-error" type="text" formControlName="name" id="name" required>
+            </p>
+            <ng-container
+                *ngIf="(tourForm.get('name')?.invalid && tourForm.get('name')?.touched) || tourForm.get('name')?.dirty">
+                <p class="error" *ngIf="tourForm.get('name')?.errors?.['required']">
+                    Name is required!
+                </p>
+                <p class="error" *ngIf="tourForm.get('name')?.errors?.['minlength']">
+                    Name should be at least 2 characters long
+                </p>
+            </ng-container>
+
+            <!-- DESCRIPTION -->
+            <p class="field">
+                <label for="description">Description</label>
+                <textarea class="input-error" id="description" formControlName="description" required></textarea>
+            </p>
+            <ng-container *ngIf="(tourForm.get('description')?.invalid && tourForm.get('description')?.touched)">
+                <p class="error" *ngIf="tourForm.get('description')?.errors?.['required']">
+                    Description is required!
+                </p>
+                <p class="error" *ngIf="tourForm.get('description')?.errors?.['minlength']">
+                    Description should be at least 20 characters long
+                </p>
+            </ng-container>
+
+            <!-- DURATION -->
+            <p class="field">
+                <label for="duration">duration</label>
+                <input class="input-error" type="text" formControlName="duration" id="duration" required>
+            </p>
+            <ng-container *ngIf="(tourForm.get('duration')?.invalid && tourForm.get('duration')?.touched)">
+                <p class="error" *ngIf="tourForm.get('duration')?.errors?.['required']">
+                    Duration is required!
+                </p>
+                <p class="error" *ngIf="tourForm.get('duration')?.errors?.['minlength']">
+                    Duration should be a valid number
+                </p>
+            </ng-container>
+
+            <!-- SUMMARY -->
+            <p class="field">
+                <label for="summary">Summary</label>
+                <textarea class="input-error" id="summary" formControlName="summary" required></textarea>
+            </p>
+            <ng-container *ngIf="(tourForm.get('summary')?.invalid && tourForm.get('summary')?.touched)">
+                <p class="error" *ngIf="tourForm.get('summary')?.errors?.['required']">
+                    Summary is required!
+                </p>
+                <p class="error" *ngIf="tourForm.get('summary')?.errors?.['minlength']">
+                    Summary should be at least 15 characters long
+                </p>
+            </ng-container>
+
+            <!-- DIFFICULTY -->
+            <p class="field field-icon">
+                <label for="difficulty">Difficulty</label>
+                <select formControlName="difficulty" id="difficulty" class="difficulty" required>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="difficult">Difficult</option>
+                </select>
+            </p>
+            <ng-container *ngIf="(tourForm.get('difficulty')?.invalid && tourForm.get('difficulty')?.touched)">
+                <p class="error" *ngIf="tourForm.get('difficulty')?.errors?.['required']">
+                    Difficulty is required!
+                </p>
+            </ng-container>
+
+            <!-- PRICE -->
+            <p class="field">
+                <label for="price">price</label>
+                <input class="input-error" type="text" formControlName="price" id="price" required>
+            </p>
+            <ng-container *ngIf="(tourForm.get('price')?.invalid && tourForm.get('price')?.touched)">
+                <p class="error" *ngIf="tourForm.get('price')?.errors?.['required']">
+                    Price is required!
+                </p>
+                <!-- to do error -->
+                <p class="error" *ngIf="tourForm.get('price')?.errors?.['minlength']">
+                    Price should be a valid number
+                </p>
+            </ng-container>
+
+            <!-- PRICE DISCOUNT -->
+            <p class="field">
+                <label for="priceDiscount">Price discount</label>
+                <input class="input-error" type="text" formControlName="priceDiscount" id="priceDiscount" required>
+            </p>
+            <ng-container *ngIf="(tourForm.get('priceDiscount')?.invalid && tourForm.get('priceDiscount')?.touched)">
+                <p class="error" *ngIf="tourForm.get('priceDiscount')?.errors?.['required']">
+                    Price discount is required!
+                </p>
+                <!-- to do error -->
+                <p class="error" *ngIf="tourForm.get('priceDiscount')?.errors?.['minlength']">
+                    Price discount should be a valid number
+                </p>
+            </ng-container>
+
+            <!-- MAX GROUP SIZE -->
+            <p class="field">
+                <label for="maxGroupSize">Max group size</label>
+                <input class="input-error" type="text" formControlName="maxGroupSize" id="maxGroupSize" required>
+            </p>
+            <ng-container *ngIf="(tourForm.get('maxGroupSize')?.invalid && tourForm.get('maxGroupSize')?.touched)">
+                <p class="error" *ngIf="tourForm.get('maxGroupSize')?.errors?.['required']">
+                    Max group size is required!
+                </p>
+                <!-- to do error -->
+                <p class="error" *ngIf="tourForm.get('maxGroupSize')?.errors?.['minlength']">
+                    Max group size should be a valid number
+                </p>
+            </ng-container>
+
+            <!-- START LOCATION -->
+            <!-- nested form group -->
+            <ng-container formGroupName="startLocation">
+                <p>Start location</p>
+                <!-- COORDINATES -->
+                <p class="field">
+                    <label for="coordinates">Coordinates</label>
+                    <input class="input-error" type="text" formControlName="coordinates" id="coordinates" required>
+                </p>
+                <ng-container
+                    *ngIf="tourForm.get('startLocation')?.get('coordinates')?.invalid && tourForm.get('startLocation')?.get('coordinates')?.touched">
+                    <p class="error" *ngIf="tourForm.get('startLocation')?.get('coordinates')?.errors?.['required']">
+                        Coordinates is required!
+                    </p>
+                    <p class="error" *ngIf="tourForm.get('startLocation')?.get('coordinates')?.errors?.['minlength']">
+                        Coordinates should have valid numbers.
+                    </p>
+                </ng-container>
+
+
+                <!-- ADDRESS -->
+                <p class="field">
+                    <label for="address">address</label>
+                    <input class="input-error" type="text" formControlName="address" id="address" required>
+                </p>
+                <ng-container *ngIf="(tourForm.get('address')?.invalid && tourForm.get('address')?.touched)">
+                    <p class="error" *ngIf="tourForm.get('address')?.errors?.['required']">
+                        Address is required!
+                    </p>
+                </ng-container>
+
+
+                <!-- DESCRIPTION -->
+                <p class="field">
+                    <label for="description">description</label>
+                    <input class="input-error" type="text" formControlName="description" id="description" required>
+                </p>
+                <ng-container *ngIf="(tourForm.get('description')?.invalid && tourForm.get('description')?.touched)">
+                    <p class="error" *ngIf="tourForm.get('description')?.errors?.['required']">
+                        Description is required!
+                    </p>
+                </ng-container>
+            </ng-container>
+
+            <h3>Add Course Lessons:</h3>
+            <div class="add-location-form">
+                <ng-container formArrayName="locations">
+                    <ng-container *ngFor="let locationForm of locations.controls; let i = index">
+                        <div class="location-form-row" [formGroupName]="i">
+                            <p>
+                                <input type="text" formControlName="coordinates" id="coordinatesLocation" required>
+                            </p>
+                            <p>
+                                <input type="text" formControlName="address" id="addressLocation" required>
+                            </p>
+                            <p>
+                                <input type="text" formControlName="description" id="descriptionLocation" required>
+                            </p>
+                            <p class="delete-btn" (click)="deleteLocation(i)">-</p>
+                        </div>
+                    </ng-container>
+                </ng-container>
+
+                <p (click)="addLocation()">+</p>
+
+            </div>
+
+            <!-- {{ tourForm.value | json }} -->
+            <!-- {{ tourForm.errors | json }} -->
+            <!-- {{ tourForm.get('pass')?.errors | json }} -->
+
+
+            <button class="btn btn--white" [disabled]="tourForm.invalid" type="submit">Create Tour</button>
+
+            <p class="text-center">Already a user? <a routerLink="/auth/login" class="btn--nutral">Login</a></p>
+
+        </form>
+    </div>
+
+</main>
+
+<!-- export interface ITour {
+
+    imageCover: string, // yes
+    images: string[], // yes
+
+
+    
+    startDates: string[], // yes
+
+    // formGroup
+    locations: [{ 
+      coordinates: number[], // yes
+      description: string, // yes
+      day: number 
+    }] // no
+    
+    guides: IUser[], // ???
+    __v: number
+} -->

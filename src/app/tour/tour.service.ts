@@ -21,4 +21,8 @@ export class TourService {
   mostPopularTours() {
     return this.httpClient.get<ITour[]>(`/api/tours?limit=9`);
   }
+
+  createTour(tour: ITour) {
+    return this.httpClient.post<ITour>(`/api/tours`, tour);
+  }
 }

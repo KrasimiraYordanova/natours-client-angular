@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { TourRoutingModule } from './tour-routing.module';
 import { CreateTourComponent } from './create-tour/create-tour.component';
 import { TourInfoComponent } from './tour-info/tour-info.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,6 +22,7 @@ import { TourInfoComponent } from './tour-info/tour-info.component';
   imports: [
     CommonModule,
     TourRoutingModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   exports: [
