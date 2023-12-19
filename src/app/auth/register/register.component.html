@@ -1,57 +1,57 @@
 <main>
 
     <div class="form-container">
-        <form class="login" [formGroup]="formRegister" (ngSubmit)="registerHandler()">
+        <form class="form" [formGroup]="formRegister" (ngSubmit)="registerHandler()">
 
             <h2>Register Form</h2>
 
-            <p class="field">
-                <label for="name">Full Name</label>
-                <input class="input-error" type="name" formControlName="name" id="name">
+            <p class="form__field-group">
+                <label class="form__field-label"  for="name">Full Name</label>
+                <input class="form__field-input" type="name" formControlName="name" id="name">
             </p>
             <ng-container
                 *ngIf="(formRegister.get('name')?.invalid && formRegister.get('name')?.touched) || formRegister.get('name')?.dirty">
-                <p class="error" *ngIf="formRegister.get('name')?.errors?.['required']">
+                <p class="form__field-error" *ngIf="formRegister.get('name')?.errors?.['required']">
                     Name is required!
                 </p>
-                <p class="error" *ngIf="formRegister.get('name')?.errors?.['minlength']">
+                <p class="form__field-error" *ngIf="formRegister.get('name')?.errors?.['minlength']">
                     Name should be at least 2 characters long
                 </p>
             </ng-container>
 
-            <p class="field">
-                <label for="email">Email</label>
-                <input class="input-error" type="email" formControlName="email" id="email">
+            <p class="form__field-group">
+                <label class="form__field-label" for="email">Email</label>
+                <input class="form__field-input" type="email" formControlName="email" id="email">
             </p>
             <ng-container
                 *ngIf="(formRegister.get('email')?.invalid && formRegister.get('email')?.touched)">
-                <p class="error" *ngIf="formRegister.get('email')?.errors?.['required']">
+                <p class="form__field-error" *ngIf="formRegister.get('email')?.errors?.['required']">
                     Email is required!
                 </p>
-                <p class="error" *ngIf="formRegister.get('email')?.errors?.['pattern']">
+                <p class="form__field-error" *ngIf="formRegister.get('email')?.errors?.['pattern']">
                     Email is invalid!
                 </p>
             </ng-container>
 
             <ng-container formGroupName="pass">
-                <p class="field">
-                    <label for="password">Password</label>
-                    <input type="password" formControlName="password" id="password">
+                <p class="form__field-group">
+                    <label class="form__field-label" for="password">Password</label>
+                    <input class="form__field-input" type="password" formControlName="password" id="password">
                 </p>
                 <ng-container *ngIf="formRegister.get('pass')?.get('password')?.invalid && formRegister.get('pass')?.get('password')?.touched">
-                    <p class="error" *ngIf="formRegister.get('pass')?.get('password')?.errors?.['required']">
+                    <p class="form__field-error" *ngIf="formRegister.get('pass')?.get('password')?.errors?.['required']">
                         Password is required!
                     </p>
-                    <p class="error" *ngIf="formRegister.get('pass')?.get('password')?.errors?.['minlength']">
+                    <p class="form__field-error" *ngIf="formRegister.get('pass')?.get('password')?.errors?.['minlength']">
                         Password must be at least 8 characters!
                     </p>
                 </ng-container>
 
-                <p class="field">
-                    <label for="rePassword">Repassword</label>
-                    <input type="password" formControlName="rePassword" id="rePassword">
+                <p class="form__field-group">
+                    <label class="form__field-label" for="rePassword">Repeat password</label>
+                    <input class="form__field-input" type="password" formControlName="rePassword" id="rePassword">
                 </p>
-                <p class="error" *ngIf="formRegister.get('pass')?.errors?.['matchingPasswordsValidator'] && formRegister.get('pass')?.get('rePassword')?.touched">
+                <p class="form__field-error" *ngIf="formRegister.get('pass')?.errors?.['matchingPasswordsValidator'] && formRegister.get('pass')?.get('rePassword')?.touched">
                     Passwords don't match!
                 </p>
             </ng-container>
@@ -62,7 +62,7 @@
 
             <button class="btn btn--white" [disabled]="formRegister.invalid">Create account</button>
 
-            <p class="text-center">Already a user? <a routerLink="/auth/login" class="btn--nutral">Login</a></p>
+            <p class="form__paragraph">Already a user? <a routerLink="/auth/login" class="btn--nutral">Login</a></p>
 
         </form>
     </div>

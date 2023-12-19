@@ -1,45 +1,46 @@
 <main>
 
-        <div class="form-container">
-            <form class="login" #formLogin="ngForm" (ngSubmit)="loginHandler(formLogin)">
+    <div class="form-container">
+        <form class="form" #formLogin="ngForm" (ngSubmit)="loginHandler(formLogin)">
 
-                    <h2>Login Form</h2>
+            <h2>Login Form</h2>
 
-                    <!-- EMAIL -->
-                    <p class="field">
-                        <label for="email">Email</label>
-                        <input class="input-error" type="email" #emailInput="ngModel" ngModel name="email" id="email" required>
-                    </p>
-                    <!-- EMAIL ERRORS -->
-                    <ng-container *ngIf="(emailInput.invalid && emailInput.touched) || emailInput.dirty">
-                    <p class="error" *ngIf="emailInput.errors?.['required']">
-                        Email is required!
-                    </p>
-                    <!-- <p class="error" *ngIf="emailInput.errors?.['pattern']">
+            <!-- EMAIL -->
+            <p class="form__field-group">
+                <label class="form__field-label" for="email">Email</label>
+                <input class="form__field-input" type="email" #emailInput="ngModel" ngModel name="email" id="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+            </p>
+            <!-- EMAIL ERRORS -->
+            <ng-container *ngIf="(emailInput.invalid && emailInput.touched) || emailInput.dirty">
+                <p class="form__field-error" *ngIf="emailInput.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="form__field-error" *ngIf="emailInput.errors?.['pattern']">
                         Email is invalid!
-                    </p> -->
-                </ng-container>
-
-                    <!-- PASSWORD -->
-                    <p class="field field-icon">
-                        <label for="password">Password</label>
-                        <input type="password" #passwordInput="ngModel" ngModel [minlength]="8" name="password" id="password" required>
                     </p>
-                    <!-- PASSWORD ERRORS -->
-                    <ng-container *ngIf="(passwordInput.invalid && passwordInput.touched) || passwordInput.dirty">
-                    <p class="error" *ngIf="passwordInput.errors?.['required']">
-                        Password is required!
-                    </p>
-                    <p class="error" *ngIf="passwordInput.errors?.['minlength']">
-                        Password must be at least 8 characters!
-                    </p>
-                </ng-container>
+            </ng-container>
 
-                    <button class="btn btn--white" [disabled]="formLogin.invalid">Login</button>
+            <!-- PASSWORD -->
+            <p class="form__field-group">
+                <label class="form__field-label" for="password">Password</label>
+                <input class="form__field-input" type="password" #passwordInput="ngModel" ngModel [minlength]="8"
+                    name="password" id="password" required>
+            </p>
+            <!-- PASSWORD ERRORS -->
+            <ng-container *ngIf="(passwordInput.invalid && passwordInput.touched) || passwordInput.dirty">
+                <p class="form__field-error" *ngIf="passwordInput.errors?.['required']">
+                    Password is required!
+                </p>
+                <p class="form__field-error" *ngIf="passwordInput.errors?.['minlength']">
+                    Password must be at least 8 characters!
+                </p>
+            </ng-container>
 
-                    <p class="text-center">You want an account? <a routerLink="/auth/register" class="btn--nutral">Register</a></p>
+            <button class="btn btn--white" [disabled]="formLogin.invalid">Login</button>
 
-            </form>
-        </div>
+            <p class="form__paragraph">You want an account? <a routerLink="/auth/register" class="btn--nutral">Register</a></p>
+
+        </form>
+    </div>
 
 </main>

@@ -1,95 +1,63 @@
-$color-dark-grey: #323232;
-$color-black: #000000;
-$color-white: #ffffff;
-$color-light-white: #fafafa;
-$color-light-grey: #f8f8f8;
-$color-medium-grey: #acacac;
-$color-medium-light-grey: #e1e1e1;
+@import "../../styles/form-componant.scss";
 
-$color-golden: #cfad17;
-$color-error: #d42d1b;
+.form-container {
+    width: 75%;
+}
 
+#difficulty {
+    background-color: white;
+}
+#role {
+    background-color: white;
+}
+
+.form-flex {
+    display: flex;
+    flex-direction: row;
+    gap: 7rem;
+    margin-top: 4rem;
+}
+
+.form-upper {
+    flex: 1;
+}
+
+.form-lower {
+    flex: 1;
+}
+
+.form-group-align {
+    text-align: left;
+    margin-top: 1.5rem;
+
+    &__array {
+        margin-top: 2rem;
+    }
+
+    &__element {
+        width: 80%;
+        margin: 2rem auto 0 auto;
+    }
+}
 
 .btn {
-    border: none;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    display: inline-block;
-    font-size: 1.6rem;
-    width: 50%;
-    margin: 0 auto 2rem auto;
-    box-shadow: 0.1rem 0.1rem 0.1rem rgba($color-black, .15);
-    cursor: pointer;
 
-    &--white {
+    width: 35%;
+
+    &--create {
         background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
         // background-color: $color-light-white;
         color: inherit;
         border-radius: 5rem;
+        width: 15%;
+        margin: 2rem auto 0 auto;
     }
 
-    &--nutral {
+    &--delete {
+        background-color: $color-white;
         color: inherit;
         border-radius: 5rem;
+        width: 19%;
+        margin: 2rem auto 0 auto;
     }
-
-}
-
-form button {
-    margin-top: 5rem;
-}
-
-.form-container {
-    background-color: $color-white;
-    width: 50%;
-    margin: auto;
-    padding: 9rem;
-    border-radius: 5rem;
-}
-
-
-/*login register forms  */
-
-
-.login {
-    margin: 0 auto;
-    text-align: center;
-    background-color: $color-light-grey;
-
-    border-radius: 0.3em;
-    padding: 4rem 5em;
-}
-
-.field {
-    display: flex;
-    flex-direction: column;
-    // align-items: start;
-    gap: 0.5rem;
-}
-
-.login p,
-.register p {
-    padding-bottom: 0;
-    padding-top: 1.5rem;
-}
-
-.login input,
-.register input {
-    flex: 0 1 100%;
-    border: none;
-    padding: 0.5em;
-    border-radius: 0.3rem;
-}
-
-/* errors  */
-
-p.error {
-    text-align: left;
-    border-radius: 0.3em;
-    color: $color-error;
-    padding-top: 0;
-}
-
-.input-error {
-    border-left-color: $color-error;
 }
