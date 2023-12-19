@@ -9,7 +9,7 @@
                 <div class="form-flex__upper">
                     <!-- NAME -->
                     <p class="form__field-group">
-                        <label class="form__field-label" for="name">Full Name</label>
+                        <label class="form__field-label" for="name">Name</label>
                         <input class="form__field-input" type="text" formControlName="name" id="name" required>
                     </p>
                     <ng-container
@@ -99,14 +99,13 @@
                     <!-- PRICE DISCOUNT -->
                     <p class="form__field-group">
                         <label class="form__field-label" for="priceDiscount">Price discount</label>
-                        <input class="form__field-input" type="text" formControlName="priceDiscount" id="priceDiscount"
-                            required>
+                        <input class="form__field-input" type="text" formControlName="priceDiscount" id="priceDiscount">
                     </p>
                     <ng-container
                         *ngIf="(tourForm.get('priceDiscount')?.invalid && tourForm.get('priceDiscount')?.touched)">
-                        <p class="form__field-error" *ngIf="tourForm.get('priceDiscount')?.errors?.['required']">
+                        <!-- <p class="form__field-error" *ngIf="tourForm.get('priceDiscount')?.errors?.['required']">
                             Price discount is required!
-                        </p>
+                        </p> -->
                         <!-- to do error -->
                         <p class="form__field-error" *ngIf="tourForm.get('priceDiscount')?.errors?.['minlength']">
                             Price discount should be a valid number
