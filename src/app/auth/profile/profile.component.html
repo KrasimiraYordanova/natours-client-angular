@@ -1,57 +1,62 @@
 <main>
-    
-    <div class="profile"><img src="/assets/profile.png" alt="default user">
-        <h3>User Info:</h3>
+    <div class="form-container">
 
         <ng-container *ngIf="!editMode">
-            <!-- USERNAME -->
-            <div class="flex">
-                <p>Username: </p>
-                <p>{{user.fullName}}</p>
-            </div>
+            <div class="form">
 
-            <!-- EMAIL -->
-            <div class="flex">
-                <p>Email: </p>
-                <p>{{user.email}}</p>
-            </div>
+                <div class="profile"><img src="/assets/profile.png" alt="default user"></div>
+                <h3>User information</h3>
+                <!-- USERNAME -->
+                <div class="user-profile">
+                    <div class="user-profile__flex">
+                        <p><span class="user-profile__icon"><i class="fas fa-user"></i></span></p>
+                        <p>{{user.fullName}}</p>
+                    </div>
 
-            <button class="edit-button" (click)="toggleEditMode()">Edit</button>
+                    <!-- EMAIL -->
+                    <div class="user-profile__flex">
+                        <p><span><i class="fas fa-envelope"></i></span></p>
+                        <p>{{user.email}}</p>
+                    </div>
+                </div>
+
+                <button class="btn btn--white" (click)="toggleEditMode()">Edit</button>
+            </div>
         </ng-container>
 
-        <form [formGroup]="profileForm" class="register" (ngSubmit)="profileHandler()" *ngIf="editMode">
-
+        <form class="form" [formGroup]="profileForm" (ngSubmit)="profileHandler()" *ngIf="editMode">
+            <div class="profile"><img src="/assets/profile.png" alt="default user"></div>
+            <h3>Edit user information</h3>
             <!-- EDIT MODE USERNAME -->
-            <p class="field field-icon">
-                <label for="name"><span><i class="fas fa-user"></i></span></label>
-                <input class="input-error" type="text" formControlName="name" id="name">
+            <p class="form__field-group">
+                <label class="form__field-label" for="name"></label>
+                <input class="form__field-input" type="text" formControlName="name" id="name">
             </p>
             <ng-container *ngIf="profileForm.get('name')?.touched || profileForm.get('name')?.invalid"></ng-container>
-            <p *ngIf="profileForm.get('name')?.errors?.['required']"
-                class="error">
+            <p class="form__field-error" *ngIf="profileForm.get('name')?.errors?.['required']">
                 Name is required!
             </p>
-            <p *ngIf="profileForm.get('name')?.errors?.['minlength']"
-                class="error">
+            <p class="form__field-error" *ngIf="profileForm.get('name')?.errors?.['minlength']">
                 Name must be at least 2 characters long!
             </p>
 
             <!-- EDIT MODE EMAIL -->
-            <p class="field field-icon">
-                <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                <input type="email" formControlName="email" id="email">
+            <p class="form__field-group">
+                <label class="form__field-label" for="email"></label>
+                <input class="form__field-input" type="email" formControlName="email" id="email">
             </p>
             <ng-container *ngIf="profileForm.get('email')?.touched || profileForm.get('email')?.invalid">
-                <p *ngIf="profileForm.get('email')?.errors?.['required']" class="error">
+                <p class="form__field-error" *ngIf="profileForm.get('email')?.errors?.['required']">
                     Email is required!
                 </p>
-                <p *ngIf="profileForm.get('email')?.errors?.['emailValidator']" class="error">
+                <p class="form__field-error" *ngIf="profileForm.get('email')?.errors?.['emailValidator']">
                     Email is not valid!
                 </p>
             </ng-container>
 
-            <button class="edit-button" (click)="profileHandler()">Save</button>
+            <button class="btn btn--white" (click)="profileHandler()">Save</button>
         </form>
+
     </div>
 
 </main>

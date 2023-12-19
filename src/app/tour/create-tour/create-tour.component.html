@@ -6,7 +6,7 @@
             <h2>Create a Tour</h2>
 
             <div class="form-flex">
-                <div class="form-upper">
+                <div class="form-flex__upper">
                     <!-- NAME -->
                     <p class="form__field-group">
                         <label class="form__field-label" for="name">Full Name</label>
@@ -131,110 +131,117 @@
                     </ng-container>
                 </div>
 
-                <div class="form-lower">
+                <div class="form-flex__lower">
                     <!-- START LOCATION -->
                     <!-- nested form group -->
-                    <ng-container formGroupName="startLocation">
-                        <h4 class="form-group-align form-group-align--start-location">Start location</h4>
-                        <!-- COORDINATES -->
-                        <p class="form__field-group">
-                            <label class="form__field-label" for="coordinates">Coordinates</label>
-                            <input class="form__field-input" type="text" formControlName="coordinates" id="coordinates"
-                                required>
-                        </p>
-                        <ng-container
-                            *ngIf="tourForm.get('startLocation')?.get('coordinates')?.invalid && tourForm.get('startLocation')?.get('coordinates')?.touched">
-                            <p class="form__field-error"
-                                *ngIf="tourForm.get('startLocation')?.get('coordinates')?.errors?.['required']">
-                                Coordinates is required!
+                    <div class="form-flex__lower--start-location">
+                        <ng-container formGroupName="startLocation">
+                            <h4 class="form-group-align form-group-align--start-location">Start location</h4>
+                            <!-- COORDINATES -->
+                            <p class="form__field-group">
+                                <label class="form__field-label" for="coordinates">Coordinates</label>
+                                <input class="form__field-input" type="text" formControlName="coordinates"
+                                    id="coordinates" required>
                             </p>
-                            <p class="form__field-error"
-                                *ngIf="tourForm.get('startLocation')?.get('coordinates')?.errors?.['minlength']">
-                                Coordinates should have valid numbers.
+                            <ng-container
+                                *ngIf="tourForm.get('startLocation')?.get('coordinates')?.invalid && tourForm.get('startLocation')?.get('coordinates')?.touched">
+                                <p class="form__field-error"
+                                    *ngIf="tourForm.get('startLocation')?.get('coordinates')?.errors?.['required']">
+                                    Coordinates is required!
+                                </p>
+                                <p class="form__field-error"
+                                    *ngIf="tourForm.get('startLocation')?.get('coordinates')?.errors?.['minlength']">
+                                    Coordinates should have valid numbers.
+                                </p>
+                            </ng-container>
+
+
+                            <!-- ADDRESS -->
+                            <p class="form__field-group">
+                                <label class="form__field-label" for="address">Address</label>
+                                <input class="form__field-input" type="text" formControlName="address" id="address"
+                                    required>
                             </p>
-                        </ng-container>
+                            <ng-container
+                                *ngIf="(tourForm.get('address')?.invalid && tourForm.get('address')?.touched)">
+                                <p class="form__field-error" *ngIf="tourForm.get('address')?.errors?.['required']">
+                                    Address is required!
+                                </p>
+                            </ng-container>
 
 
-                        <!-- ADDRESS -->
-                        <p class="form__field-group">
-                            <label class="form__field-label" for="address">Address</label>
-                            <input class="form__field-input" type="text" formControlName="address" id="address"
-                                required>
-                        </p>
-                        <ng-container *ngIf="(tourForm.get('address')?.invalid && tourForm.get('address')?.touched)">
-                            <p class="form__field-error" *ngIf="tourForm.get('address')?.errors?.['required']">
-                                Address is required!
+                            <!-- DESCRIPTION -->
+                            <p class="form__field-group">
+                                <label class="form__field-label" for="description">Name</label>
+                                <input class="form__field-input" type="text" formControlName="description"
+                                    id="description" required>
                             </p>
-                        </ng-container>
-
-
-                        <!-- DESCRIPTION -->
-                        <p class="form__field-group">
-                            <label class="form__field-label" for="description">Name</label>
-                            <input class="form__field-input" type="text" formControlName="description" id="description"
-                                required>
-                        </p>
-                        <ng-container
-                            *ngIf="(tourForm.get('description')?.invalid && tourForm.get('description')?.touched)">
-                            <p class="form__field-error" *ngIf="tourForm.get('description')?.errors?.['required']">
-                                Description is required!
-                            </p>
-                        </ng-container>
-                    </ng-container>
-
-                    <h4 class="form-group-align form-group-align--location">Add location</h4>
-                    <div class="form-group-align__array">
-                        <ng-container formArrayName="locations">
-                            <ng-container *ngFor="let locationForm of locations.controls; let i = index">
-                                <div class="form-group-align__element" [formGroupName]="i">
-                                    <p class="form__field-group">
-                                        <label class="form__field-label" for="coordinates">Coordinates</label>
-                                        <input class="form__field-input" type="text" formControlName="coordinates"
-                                            id="coordinates" required>
-                                    </p>
-                                    <p class="form__field-group">
-                                        <label class="form__field-label" for="address">Address</label>
-                                        <input class="form__field-input" type="text" formControlName="address"
-                                            id="address" required>
-                                    </p>
-                                    <p class="form__field-group">
-                                        <label class="form__field-label" for="description">Name</label>
-                                        <input class="form__field-input" type="text" formControlName="description"
-                                            id="description" required>
-                                    </p>
-                                    <p class="btn btn--delete" (click)="deleteLocation(i)">-</p>
-                                </div>
+                            <ng-container
+                                *ngIf="(tourForm.get('description')?.invalid && tourForm.get('description')?.touched)">
+                                <p class="form__field-error" *ngIf="tourForm.get('description')?.errors?.['required']">
+                                    Description is required!
+                                </p>
                             </ng-container>
                         </ng-container>
-
-                        <a class="btn btn--create" (click)="addLocation()">+</a>
-
                     </div>
-                    <h4 class="form-group-align form-group-align--start-guide">Add guide</h4>
-                    <div class="form-group-align__array">
-                        <ng-container formArrayName="guides">
-                            <ng-container *ngFor="let guideForm of guides.controls; let i = index">
-                                <div class="form-group-align__element" [formGroupName]="i">
-                                    <p class="form__field-group">
-                                        <label class="form__field-label" for="nameguide">Name</label>
-                                        <input class="form__field-input" type="text" formControlName="name"
-                                            id="nameguide" required>
-                                    </p>
-                                    <p class="form__field-group">
-                                        <label class="form__field-label" for="role">Role</label>
-                                        <select class="form__field-input" formControlName="role" id="role">
-                                            <option value="lead guide">Lead guide</option>
-                                            <option value="guide">Guide</option>
-                                        </select>
-                                    </p>
 
-                                    <p class="btn btn--delete" (click)="deleteGuide(i)">-</p>
-                                </div>
+                    <div class="form-flex__lower--add-location">
+                        <h4 class="form-group-align form-group-align--location">Add location</h4>
+                        <div class="form-group-align__array">
+                            <ng-container formArrayName="locations">
+                                <ng-container *ngFor="let locationForm of locations.controls; let i = index">
+                                    <div class="form-group-align__element" [formGroupName]="i">
+                                        <p class="form__field-group">
+                                            <label class="form__field-label" for="coordinates">Coordinates</label>
+                                            <input class="form__field-input" type="text" formControlName="coordinates"
+                                                id="coordinates" required>
+                                        </p>
+                                        <p class="form__field-group">
+                                            <label class="form__field-label" for="address">Address</label>
+                                            <input class="form__field-input" type="text" formControlName="address"
+                                                id="address" required>
+                                        </p>
+                                        <p class="form__field-group">
+                                            <label class="form__field-label" for="description">Name</label>
+                                            <input class="form__field-input" type="text" formControlName="description"
+                                                id="description" required>
+                                        </p>
+                                        <p class="btn btn--delete" (click)="deleteLocation(i)">-</p>
+                                    </div>
+                                </ng-container>
                             </ng-container>
-                        </ng-container>
 
-                        <a class="btn btn--create" (click)="addGuide()">+</a>
+                            <a class="btn btn--create" (click)="addLocation()">+</a>
+                        </div>
+                    </div>
 
+                    <div class="form-flex__lower--add-role">
+                        <h4 class="form-group-align form-group-align--start-guide">Add guide</h4>
+                        <div class="form-group-align__array">
+                            <ng-container formArrayName="guides">
+                                <ng-container *ngFor="let guideForm of guides.controls; let i = index">
+                                    <div class="form-group-align__element" [formGroupName]="i">
+                                        <p class="form__field-group">
+                                            <label class="form__field-label" for="nameguide">Name</label>
+                                            <input class="form__field-input" type="text" formControlName="name"
+                                                id="nameguide" required>
+                                        </p>
+                                        <p class="form__field-group">
+                                            <label class="form__field-label" for="role">Role</label>
+                                            <select class="form__field-input" formControlName="role" id="role">
+                                                <option value="lead guide">Lead guide</option>
+                                                <option value="guide">Guide</option>
+                                            </select>
+                                        </p>
+
+                                        <p class="btn btn--delete" (click)="deleteGuide(i)">-</p>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+
+                            <a class="btn btn--create" (click)="addGuide()">+</a>
+
+                        </div>
                     </div>
 
                     <!-- {{ tourForm.value | json }} -->
