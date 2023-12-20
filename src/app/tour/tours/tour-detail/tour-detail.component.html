@@ -1,14 +1,15 @@
 <div class="card">
 
-    <div class="card__picture">
-        <!-- &nbsp; -->
-        <img src="" alt="">
+    <div class="card__header">
+        <div class="card__picture">
+            <div class="card__picture-overlay">&nbsp;</div>
+            <img class="card__picture-img" src="/assets/images/{{tour.imageCover}}" alt="{{tour.name}}">
+        </div>
+        <h4 class="card__heading">
+            <span class="card__heading-span">{{tour.name}}</span>
+        </h4>
     </div>
 
-    <h4 class="card__heading">
-        <span class="card__heading-span">{{tour.name}}</span>
-    </h4>
-    
     <div class="card__details">
         <ul class="card__details--list">
             <li class="card__details--list-item">Price: {{tour.price}}</li>
@@ -17,6 +18,6 @@
         </ul>
     </div>
 
-    <a routerLink="/tour/{{tour._id}}" class="btn btn--white">Tour details</a>
+    <a routerLink="/tour/{{tour._id}}" class="btn btn--tour">Tour details</a>
 
 </div>

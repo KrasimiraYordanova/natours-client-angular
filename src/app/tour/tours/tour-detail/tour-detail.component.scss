@@ -14,42 +14,70 @@ $color-golden: #cfad17;
     // see -> &__picture comment
     overflow: hidden;
     box-shadow: 0.1rem 0.8rem 1.5rem rgba($color-black, .15);
-    position: relative;
 
     display: flex;
     flex-direction: column;
 
+    &__header {
+        position: relative;
+    }
+
     &__picture {
-        // border radius doesn not work after image application 
-        // to fix this on the parent element where the radius is defined 
-        // we set "overflow: hidden", so the part of the image the go outside got hidden
-        background-image:
-            linear-gradient(to right bottom, $color-golden, $color-black),
-            url(../../../../assets/images/winter.jpg);
-        background-blend-mode: hue;
+        position: relative;
+
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-        background-position: bottom;
+        clip-path: polygon(0 0, 100% 0, 100% 83%, 0 98%);
         height: 27rem;
     }
 
+    &__picture-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: -webkit-gradient(linear,
+                left top,
+                right bottom,
+                from($color-golden),
+                to(#28b487));
+        background-image: linear-gradient(to right bottom, $color-golden, #28b487);
+        opacity: 0.7;
+    }
+
+    &__picture-img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+
     &__heading {
-        font-size: 2.8rem;
+        font-size: 2.7rem;
         font-weight: 300;
         text-transform: uppercase;
         color: $color-white;
 
-        position: absolute;
-        top: 12rem;
-        right: 2rem;
         text-align: right;
+
+        position: absolute;
+        bottom: 1rem;
+        right: 2rem;
+        width: 70%;
+        z-index: 10;
     }
 
     &__heading-span {
-        background-image: linear-gradient(to right bottom, rgba($color-golden, .85), rgba($color-dark-grey, .85));
         padding: 1rem 1.5rem;
+        line-height: 1;
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
+        background-image: -webkit-gradient(linear,
+                left top,
+                right bottom,
+                from(rgba($color-golden, 0.85)),
+                to(rgba(40, 180, 135, 0.85)));
+        background-image: linear-gradient(to bottom right,
+                rgba($color-golden, 0.85),
+                rgba(40, 180, 135, 0.85));
     }
 
     &__details {
@@ -82,11 +110,11 @@ $color-golden: #cfad17;
     margin: 0 auto 2rem auto;
     box-shadow: 0.1rem 0.1rem 0.1rem rgba($color-black, .15);
 
-    &--white {
-        background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
+    &--tour {
+        background-image: linear-gradient(to right bottom, rgba(#28b487, .75), rgba($color-golden, .75));
         // background-color: $color-light-white;
         color: inherit;
         border-radius: 5rem;
     }
-    
+
 }
