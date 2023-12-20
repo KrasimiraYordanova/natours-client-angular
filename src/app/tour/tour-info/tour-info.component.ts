@@ -15,10 +15,10 @@ export class TourInfoComponent implements OnInit, OnDestroy{
   constructor(private tourService: TourService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.tourService.tour(this.activatedRoute.snapshot.params['id']).subscribe({
+    this.tourService.tour(this.activatedRoute.snapshot.params['slug']).subscribe({
       next: (tour) => {
         console.log(tour);
-        // this.tour = tour;
+        this.tour = tour;
       },
       error: (err) => {
         console.log(err);

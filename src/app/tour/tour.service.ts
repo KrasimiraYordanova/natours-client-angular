@@ -13,8 +13,8 @@ export class TourService {
     return this.httpClient.get<ITour[]>(`/api/tours`);
   }
 
-  tour(id: string) {
-    return this.httpClient.get<ITour>(`/api/tours/${id}`);
+  tour(slug: string) {
+    return this.httpClient.get<ITour>(`/api/tours/${slug}`);
   } 
 
   // last 9 tour created to be changed to most popular tours

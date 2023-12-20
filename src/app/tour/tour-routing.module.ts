@@ -29,12 +29,10 @@ const routes: Routes = [
               }
           },
           {
-            path: ':id',
+            path: ':slug',
             component: TourInfoComponent,
-            // canActivate: [authGuard()],
             data: {
                 title: "Nature's tours | tour detail",
-                // loginRequired: false
               }
           },
     ]
