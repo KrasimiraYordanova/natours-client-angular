@@ -27,7 +27,7 @@
 
                 <div class="overview-box__detail">
                     <span class="overview-box__label">Upcoming tour date:</span>
-                    <!-- <span class="overview-box__text"> {{tour?.startDates[0]}} </span> -->
+                    <span class="overview-box__text"> {{tour?.startDates?.[0] | date }} </span>
                 </div>
                 <div class="overview-box__detail">
                     <span class="overview-box__label">Difficulty:</span>
@@ -35,27 +35,31 @@
                 </div>
                 <div class="overview-box__detail">
                     <span class="overview-box__label">Group Size:</span>
-                    <span class="overview-box__text"> {{tour?.maxGroupSize}} </span>
+                    <span class="overview-box__text"> {{tour?.maxGroupSize}} people</span>
+                </div>
+                <div class="overview-box__detail">
+                    <span class="overview-box__label">Duration:</span>
+                    <span class="overview-box__text"> {{tour?.duration}} days</span>
                 </div>
                 <div class="overview-box__detail">
                     <span class="overview-box__label">Rating:</span>
-                    <!-- <span class="overview-box__text"> {{tour?.rating}} </span> -->
+                    <span class="overview-box__text"> {{tour?.ratingAverage}} / 5</span>
                 </div>
                 <!-- - const date = tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'}) -->
             </div>
 
-            <div class="overview-box__group">
-                <h2 class="heading-secondary ma-bt-lg">Your tour guides</h2>
+            <!-- <div class="overview-box__group">
+                <h2 class="heading-secondary ma-bt-lg">Your tour guides</h2> -->
                 <!-- each guide in tour.guides -->
-                <div class="overview-box__detail">
+                <!-- <div class="overview-box__detail"> -->
                     <!-- img.overview-box__img(src=`/img/users/${guide.photo}`, alt=`${guide.name}`) -->
                     <!-- - if (guide.role === 'lead-guide') -->
-                    <span class="overview-box__label">Lead guide:</span>
+                    <!-- <span class="overview-box__label">Lead guide:</span> -->
                     <!-- - if (guide.role === 'guide') -->
-                    <span class="overview-box__label">Tour guide:</span>
+                    <!-- <span class="overview-box__label">Tour guide:</span> -->
                     <!-- <span class="overview-box__text"> {{tour?.guides?.name}} </span> -->
-                </div>
-            </div>
+                <!-- </div>
+            </div> -->
         </div>
 
         <div class="description-box">
@@ -83,7 +87,7 @@
                     </div>
                     <div class="reviews__text">{{review?.review}}</div>
                     <div class="reviews__rating">
-                        <p>{{review.rating}}</p>
+                        <p>{{review.rating}} stars</p>
                         <!-- each star in [1, 2, 3, 4, 5]
                     svg.reviews__star(class=`reviews__star--${review.rating >= star ? 'active' : 'inactive'}`) -->
                     </div>

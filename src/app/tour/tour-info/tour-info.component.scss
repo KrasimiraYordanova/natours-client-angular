@@ -114,10 +114,10 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    // flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
+    align-items: center;
 
     &__group:not(:last-child) {
         margin-bottom: 7rem;
