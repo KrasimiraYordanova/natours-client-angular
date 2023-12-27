@@ -75,18 +75,20 @@
 
     <section class="section-reviews">
         <div class="reviews">
-            <!-- each review in tour.reviews -->
-            <div class="reviews__card">
-                <div class="reviews__avatar">
-                    <!-- <img class="reviews__avatar-img" src="{{review.user.photo}}" alt="{{review.user.name}}"> -->
-                    <!-- <h6 class="reviews__user">{{tour?.reviews?.user?.name}}</h6> -->
-                </div>
-                <div class="reviews__text">{{tour?.reviews?.review}}</div>
-                <div class="reviews__rating">
-                    <!-- each star in [1, 2, 3, 4, 5]
+            <ng-container *ngFor="let review of tour?.reviews; let i = index">
+                <div class="reviews__card">
+                    <div class="reviews__avatar">
+                        <!-- <img class="reviews__avatar-img" src="{{review.user.photo}}" alt="{{review.user.fullName}}"> -->
+                        <h6 class="reviews__user">{{review?.user?.fullName}}</h6>
+                    </div>
+                    <div class="reviews__text">{{review?.review}}</div>
+                    <div class="reviews__rating">
+                        <p>{{review.rating}}</p>
+                        <!-- each star in [1, 2, 3, 4, 5]
                     svg.reviews__star(class=`reviews__star--${review.rating >= star ? 'active' : 'inactive'}`) -->
+                    </div>
                 </div>
-            </div>
+            </ng-container>
         </div>
     </section>
 

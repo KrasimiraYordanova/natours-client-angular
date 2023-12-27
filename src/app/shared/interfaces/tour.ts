@@ -20,7 +20,7 @@ export interface ITour {
         createdAt: string, // no
         startDates: string[], // yes
         secretTour: boolean, // no
-        reviews: IReview,
+        reviews: IReview[],
 
         // formGroup 
         startLocation: {
