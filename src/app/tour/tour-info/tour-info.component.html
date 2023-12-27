@@ -1,1 +1,94 @@
-<p>tour-info works!</p>
+<main>
+    <section class="section-header">
+        <div class="header__hero">
+            <div class="header__hero-overlay">&nbsp;</div>
+            <img class="header__hero-img" src="/assets/images/{{tour?.imageCover}}" alt="{{tour?.name}}">
+        </div>
+
+        <div class="heading-box">
+            <h1 class="heading-primary">
+                <span>{{tour?.name}}</span>
+            </h1>
+            <div class="heading-box__group">
+                <div class="heading-box__detail">
+                    <span class="heading-box__text">{{tour?.duration}} days </span>
+                </div>
+                <div class="heading-box__detail">
+                    <span class="heading-box__text">{{tour?.startLocation?.description}}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-description">
+        <div class="overview-box">
+            <div class="overview-box__group">
+                <h2 class="heading-secondary ma-bt-lg">Quick information</h2>
+
+                <div class="overview-box__detail">
+                    <span class="overview-box__label">Upcoming tour date</span>
+                    <!-- <span class="overview-box__text"> {{tour?.startDates[0]}} </span> -->
+                </div>
+                <div class="overview-box__detail">
+                    <span class="overview-box__label">Difficulty</span>
+                    <span class="overview-box__text"> {{tour?.difficulty}} </span>
+                </div>
+                <div class="overview-box__detail">
+                    <span class="overview-box__label">Group Size</span>
+                    <span class="overview-box__text"> {{tour?.maxGroupSize}} </span>
+                </div>
+                <div class="overview-box__detail">
+                    <span class="overview-box__label">Rating</span>
+                    <!-- <span class="overview-box__text"> {{tour?.rating}} </span> -->
+                </div>
+                <!-- - const date = tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'}) -->
+            </div>
+
+            <div class="overview-box__group">
+                <h2 class="heading-secondary ma-bt-lg">Your tour guides</h2>
+                <!-- each guide in tour.guides -->
+                <div class="overview-box__detail">
+                    <!-- img.overview-box__img(src=`/img/users/${guide.photo}`, alt=`${guide.name}`) -->
+                    <!-- - if (guide.role === 'lead-guide') -->
+                    <span class="overview-box__label">Lead guide</span>
+                    <!-- - if (guide.role === 'guide') -->
+                    <span class="overview-box__label">Tour guide</span>
+                    <!-- <span class="overview-box__text"> {{tour?.guides?.name}} </span> -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="description-box">
+            <h2 class="heading-secondary ma-bt-lg">About {{tour?.name}} tour</h2>
+            <p class="description__text">{{tour?.description}}</p>
+        </div>
+    </section>
+
+    <section class="section-pictures">
+        <!-- each img, i in tour.images -->
+        <div class="picture-box">
+            <img class="picture-box__img" src="" alt="" class="">
+        </div>
+    </section>
+
+    <section class="section-map"></section>
+
+    <section class="section-reviews">
+        <div class="reviews">
+            <!-- each review in tour.reviews -->
+            <div class="reviews__card">
+                <div class="reviews__avatar">
+                    <!-- <img class="reviews__avatar-img" src="{{review.user.photo}}" alt="{{review.user.name}}"> -->
+                    <!-- <h6 class="reviews__user">{{tour?.reviews?.user?.name}}</h6> -->
+                </div>
+                <div class="reviews__text">{{tour?.reviews?.review}}</div>
+                <div class="reviews__rating">
+                    <!-- each star in [1, 2, 3, 4, 5]
+                    svg.reviews__star(class=`reviews__star--${review.rating >= star ? 'active' : 'inactive'}`) -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

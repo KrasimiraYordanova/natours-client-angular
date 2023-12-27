@@ -1,3 +1,4 @@
+import { IReview } from "./review";
 import { IUser } from "./user";
 
 export interface ITour {
@@ -19,6 +20,7 @@ export interface ITour {
         createdAt: string, // no
         startDates: string[], // yes
         secretTour: boolean, // no
+        reviews: IReview,
 
         // formGroup 
         startLocation: {

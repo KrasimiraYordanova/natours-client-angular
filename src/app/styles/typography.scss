@@ -1,0 +1,27 @@
+@import '../styles/variables.scss';
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    font-size: 5rem;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.heading-primary span {
+    padding: 1rem 1.5rem;
+    line-height: 1;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-image: -webkit-gradient(linear,
+            left top,
+            right bottom,
+            from(rgba($color-rose-light, 0.85)),
+            to(rgba($color-rose-dark, 0.85)));
+    background-image: linear-gradient(to bottom right,
+            rgba($color-rose-light, 0.85),
+            rgba($color-rose-dark, 0.85));
+}

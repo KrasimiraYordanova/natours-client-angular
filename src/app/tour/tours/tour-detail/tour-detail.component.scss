@@ -1,11 +1,4 @@
-$color-dark-grey: #323232;
-$color-black: #000000;
-$color-white: #ffffff;
-$color-light-white: #fafafa;
-$color-light-grey: #f8f8f8;
-$color-medium-grey: #acacac;
-
-$color-golden: #cfad17;
+@import "../../../styles/variables.scss";
 
 
 .card {
@@ -25,7 +18,7 @@ $color-golden: #cfad17;
     &__picture {
         position: relative;
 
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 83%, 0 98%);
         clip-path: polygon(0 0, 100% 0, 100% 83%, 0 98%);
         height: 27rem;
     }
@@ -38,8 +31,8 @@ $color-golden: #cfad17;
                 left top,
                 right bottom,
                 from($color-golden),
-                to(#28b487));
-        background-image: linear-gradient(to right bottom, $color-golden, #28b487);
+                to($color-green-dark));
+        background-image: linear-gradient(to right bottom, $color-golden, $color-green-dark);
         opacity: 0.7;
     }
 
@@ -73,11 +66,11 @@ $color-golden: #cfad17;
         background-image: -webkit-gradient(linear,
                 left top,
                 right bottom,
-                from(rgba($color-golden, 0.85)),
-                to(rgba(40, 180, 135, 0.85)));
+                from(rgba($color-green-light, 0.85)),
+                to(rgba($color-green-dark, 0.85)));
         background-image: linear-gradient(to bottom right,
-                rgba($color-golden, 0.85),
-                rgba(40, 180, 135, 0.85));
+                rgba($color-green-light, 0.85),
+                rgba($color-green-dark, 0.85));
     }
 
     &__details {
@@ -111,7 +104,7 @@ $color-golden: #cfad17;
     box-shadow: 0.1rem 0.1rem 0.1rem rgba($color-black, .15);
 
     &--tour {
-        background-image: linear-gradient(to right bottom, rgba(#28b487, .75), rgba($color-golden, .75));
+        background-image: linear-gradient(to right bottom, rgba($color-green-dark, .75), rgba($color-golden, .75));
         // background-color: $color-light-white;
         color: inherit;
         border-radius: 5rem;
