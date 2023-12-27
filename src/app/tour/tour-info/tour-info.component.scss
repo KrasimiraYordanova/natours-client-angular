@@ -1,6 +1,8 @@
 @import "../../styles/variables.scss";
 @import "../../styles/typography.scss";
 
+// SECTION 1
+
 .section-header {
     position: relative;
     height: 38vw;
@@ -73,4 +75,35 @@
         align-items: center;
         text-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
     }
+}
+
+// SECTION 2
+
+.section-description {
+    background-color: $color-white;
+    margin-top: 5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.section-description>* {
+    padding: 0 8vw;
+    padding-top: 14vw;
+    padding-bottom: calc(1vw + var(--section-rotate));
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+}
+
+.description-box .description {
+    margin-right: 5rem;
+}
+
+.description-box .description__text {
+    font-size: 1.7rem;
+}
+
+.description-box .description__text:not(:last-child) {
+    margin-bottom: 2rem;
 }
