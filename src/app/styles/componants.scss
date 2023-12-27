@@ -1,0 +1,40 @@
+@import "../styles/variables.scss";
+
+.btn {
+    border: none;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.6rem;
+    width: 45%;
+    margin: 5rem auto 0 auto;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba($color-black, .15);
+    cursor: pointer;
+
+    &--white {
+        background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
+        // background-color: $color-light-white;
+        color: inherit;
+        border-radius: 5rem;
+    }
+
+    &--nutral {
+        color: inherit;
+        border-radius: 5rem;
+    }
+
+    &--rose {
+        background-image: linear-gradient(to right bottom, rgba($color-rose-light, .15), $color-rose-dark);
+        // background-color: $color-light-white;
+        color: inherit;
+        border-radius: 5rem;
+    }
+}
+
+.ma-bt-md {
+    margin-bottom: 3rem !important;
+}
+
+.ma-bt-lg {
+    margin-bottom: 3.5rem !important;
+}

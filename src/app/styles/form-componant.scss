@@ -1,13 +1,5 @@
-$color-dark-grey: #323232;
-$color-black: #000000;
-$color-white: #ffffff;
-$color-light-white: #fafafa;
-$color-light-grey: #f8f8f8;
-$color-medium-grey: #acacac;
-$color-medium-light-grey: #e1e1e1;
-
-$color-golden: #cfad17;
-$color-error: #d42d1b;
+@import "../styles/variables.scss";
+@import "../styles/componants.scss";
 
 .form-container {
     background-color: $color-white;
@@ -56,30 +48,5 @@ $color-error: #d42d1b;
 
     &__paragraph {
         margin-top: 2rem;
-    }
-}
-
-
-.btn {
-    border: none;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    display: inline-block;
-    font-size: 1.6rem;
-    width: 45%;
-    margin: 5rem auto 0 auto;
-    box-shadow: 0.1rem 0.1rem 0.1rem rgba($color-black, .15);
-    cursor: pointer;
-
-    &--white {
-        background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
-        // background-color: $color-light-white;
-        color: inherit;
-        border-radius: 5rem;
-    }
-
-    &--nutral {
-        color: inherit;
-        border-radius: 5rem;
     }
 }

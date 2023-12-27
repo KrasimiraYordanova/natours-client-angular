@@ -1,5 +1,6 @@
 @import "../../styles/variables.scss";
 @import "../../styles/typography.scss";
+@import "../../styles/componants.scss";
 
 // SECTION 1
 
@@ -89,8 +90,8 @@
 
 .section-description>* {
     padding: 0 8vw;
-    padding-top: 14vw;
-    padding-bottom: calc(1vw + var(--section-rotate));
+    padding-top: 7vw;
+    padding-bottom: 7vw;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
@@ -106,4 +107,156 @@
 
 .description-box .description__text:not(:last-child) {
     margin-bottom: 2rem;
+}
+
+.overview-box {
+    background-color: $color-light-grey;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    // flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    &__group:not(:last-child) {
+        margin-bottom: 7rem;
+    }
+
+    &__detail {
+        font-size: 1.5rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        font-weight: 400;
+    }
+
+    // &__detail svg {
+    //     margin-right: 1.25rem;
+    // }
+
+    &__detail:not(:last-child) {
+        margin-bottom: 2.25rem;
+    }
+
+    //   &__icon {
+    //     height: 2.25rem;
+    //     width: 2.25rem;
+    //     fill: #55c57a;
+    //   }
+    &__label {
+        font-weight: 700;
+        margin-right: 2.25rem;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+    }
+
+    &__text {
+        text-transform: capitalize;
+    }
+
+    &__img {
+        border-radius: 50%;
+        height: 3.5rem;
+        margin-right: 1.25rem;
+    }
+}
+
+
+
+
+// CTA SECTION
+
+.section-cta {
+    margin-top: 5rem;
+    padding: 3rem;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    background-color: $color-light-grey;
+}
+
+.cta {
+    position: relative;
+    max-width: 105rem;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 9rem 5rem 9rem 21rem;
+    border-radius: .6rem;
+    -webkit-box-shadow: 0.1rem 0.8rem 1.5rem rgba($color-black, .15);
+    box-shadow: 0.1rem 0.8rem 1.5rem rgba($color-black, .15);
+
+    &__img {
+        height: 15rem;
+        width: 15rem;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        border-radius: 50%;
+        -webkit-box-shadow: 0.1rem 0.8rem 1.5rem rgba($color-black, .15);
+        box-shadow: 0.1rem 0.8rem 1.5rem rgba($color-black, .15);
+    }
+
+    &__img--logo {
+        padding: 2rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        background: -webkit-gradient(linear,
+                left top,
+                right bottom,
+                from($color-rose-light),
+                to($color-rose-dark));
+        background: linear-gradient(to right bottom, $color-rose-light, $color-rose-dark);
+        z-index: 10;
+        -webkit-transform: translate(-35%, -50%);
+        transform: translate(-35%, -50%);
+    }
+
+    // &__img--logo img {
+    //     width: 100%;
+    // }
+
+    // &__img--1 {
+    //     -webkit-transform: translate(-10%, -50%) scale(0.97);
+    //     transform: translate(-10%, -50%) scale(0.97);
+    //     z-index: 9;
+    // }
+
+    // &__img--2 {
+    //     -webkit-transform: translate(15%, -50%) scale(0.94);
+    //     transform: translate(15%, -50%) scale(0.94);
+    //     z-index: 8;
+    // }
+
+    &__content {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr auto;
+        grid-gap: 0.7rem;
+        grid-auto-flow: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    &__text {
+        font-size: 1.9rem;
+        font-weight: 400;
+    }
+}
+
+
+.btn {
+    width: 100%;
+    margin: 0 auto 0 auto;
 }
