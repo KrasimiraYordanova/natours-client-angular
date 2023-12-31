@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ITour } from '../shared/interfaces';
+import { map } from 'rxjs';
+import * as L from 'leaflet';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,27 @@ export class TourService {
   }
 
   tour(slug: string) {
-    return this.httpClient.get<ITour>(`/api/tours/${slug}`);
+    return this.httpClient.get<ITour | any>(`/api/tours/${slug}`)
+    .pipe(map((tour) => {
+      let locationsTour: any | null = null;
+       locationsTour = tour.locations.map((location: { type: any; coordinates: any[]; description: any; }) => {
+          return {
+              "type": "Feature",
+              "geometry": {
+                "type": location.type,
+                "coordinates": [location.coordinates[0], location.coordinates[1]]
+              },
+              "properties": {
+                "name": location.description
+              }
+            }
+          });
+          tour.locations = {"type": "FeatureCollection", "features": locationsTour};
+          return tour;
+    }));
   } 
 
-  // last 9 tour created to be changed to most popular tours
+  // TO DO
   mostPopularTours() {
     return this.httpClient.get<ITour[]>(`/api/tours?limit=9`);
   }

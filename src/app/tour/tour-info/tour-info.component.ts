@@ -5,6 +5,21 @@ import { ActivatedRoute } from '@angular/router';
 import * as L from "leaflet";
 import * as geojson from "geojson";
 
+const iconRetinaUrl = './assets/marker-icon-2x.png';
+const iconUrl = './assets/marker-icon.png';
+const shadowUrl = './assets/marker-shadow.png';
+const iconDefault = L.icon({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+});
+L.Marker.prototype.options.icon = iconDefault;
+
 @Component({
   selector: 'app-tour-info',
   templateUrl: './tour-info.component.html',
@@ -13,12 +28,14 @@ import * as geojson from "geojson";
 export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   tour: ITour | null = null;
-  private map: any;
+  private map: L.Map | any;
+
 
   constructor(private tourService: TourService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.tourService.tour(this.activatedRoute.snapshot.params['slug']).subscribe({
+    this.tourService.tour(this.activatedRoute.snapshot.params['slug'])
+    .subscribe({
       next: (tour) => {
         console.log(tour);
         this.tour = tour;
@@ -47,8 +64,25 @@ export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     tiles.addTo(this.map);
   }
 
+  private makeCapitalMarkers(map: any): void {
+    this.tourService.tour(this.activatedRoute.snapshot.params['slug'])
+    .subscribe({
+      next: (tour) => {
+        console.log(tour);
+          for (const feature of tour.locations.features) {
+            const lon = feature.geometry.coordinates[0];
+            const lat = feature.geometry.coordinates[1];
+            const marker = L.marker([lat, lon]);
+            
+            marker.addTo(this.map);
+          }
+      }
+    });
+  }
+
   ngAfterViewInit(): void {
     this.initMap();
+    this.makeCapitalMarkers(this.map);
   }
 
 
