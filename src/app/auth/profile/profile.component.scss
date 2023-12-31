@@ -5,14 +5,16 @@
 }
 
 .user-profile {
-    display: flex;
-    flex-direction: column;
-    margin: 3rem auto 0 auto;
+    margin: 5rem auto 0 auto;
+    width: 50%;
 
     &__flex {
         display: flex;
         gap: 2rem;
-        align-self: center;
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
     }
 
     &__icon {}
