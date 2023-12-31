@@ -165,6 +165,32 @@
     }
 }
 
+// SECTION MAP
+
+.section-map {
+    position: relative;
+    height: 60rem;
+    margin-top: 2rem;
+}
+
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .map-frame {
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;
+  }
+
+
+
 // REVIEW SECTION
 
 .section-reviews {
