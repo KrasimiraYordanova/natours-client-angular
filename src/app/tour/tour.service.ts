@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ITour } from '../shared/interfaces';
-import { Subject, map } from 'rxjs';
+import { map } from 'rxjs';
+import { INewTour } from '../shared/interfaces/newTour';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,7 @@ export class TourService {
     return this.httpClient.get<ITour[]>(`/api/tours?limit=9`);
   }
 
-  createTour(tour: ITour) {
-    return this.httpClient.post<ITour>(`/api/tours`, tour);
+  createTour(tour: INewTour) {
+    return this.httpClient.post<INewTour>(`/api/tours`, tour);
   }
 }

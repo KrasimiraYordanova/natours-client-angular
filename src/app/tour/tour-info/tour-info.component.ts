@@ -30,32 +30,33 @@ export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   tour: ITour | null = null;
   private map: L.Map | any;
-
-  
+  tourObservable: ITour | any = this.tourService.tour(this.activatedRoute.snapshot.params['slug']);
+  tourSubject$ = new Subject<ITour>();
 
 
   constructor(private tourService: TourService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.tourService.tour(this.activatedRoute.snapshot.params['slug'])
-    .subscribe({
-      next: (tour) => {
-        console.log(tour);
-        this.tour = tour;
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
+    this.tourObservable.subscribe(this.tourSubject$);
+    this.tourSubject$.subscribe({
+        next: (tour: any) => {
+          console.log(tour);
+          this.tour = tour;
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
   }
 
   //  to isolate all the map initialization
-  private initMap(): void {
+  private initMap(coords: number[]): void {
+
     // creating a new Leaflet map object
     this.map = L.map('map', {
-      center: [39.8282, -98.5795],
-      zoom: 10
-    })
+      center: [coords[1], coords[0]],
+      zoom: 9
+  })
 
     // With Leaflet, you visualize data as Layers. The kind of data you think of when you picture a map is called “tiles”. You will need to create a new tile layer and add it to the map.
     const tiles = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -68,10 +69,8 @@ export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private makeCapitalMarkers(map: any): void {
-    this.tourService.tour(this.activatedRoute.snapshot.params['slug'])
-    .subscribe({
-      next: (tour) => {
-        console.log(tour);
+    this.tourSubject$.subscribe({
+      next: (tour: ITour | any) => {
           for (const feature of tour.locations.features) {
             const lon = feature.geometry.coordinates[0];
             const lat = feature.geometry.coordinates[1];
@@ -84,7 +83,15 @@ export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.initMap();
+    this.tourSubject$.subscribe({
+      next: (tour: ITour) => {
+        this.initMap(tour.startLocation.coordinates);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+    
     this.makeCapitalMarkers(this.map);
   }
 

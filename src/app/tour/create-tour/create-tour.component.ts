@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TourService } from '../tour.service';
+import { INewTour } from 'src/app/shared/interfaces/newTour';
 
 @Component({
   selector: 'app-create-tour',
@@ -67,10 +68,12 @@ export class CreateTourComponent {
   }
 
   tourHandler() {
-    console.log(this.tourForm.value);
+    const {name, description, duration, summary, difficulty, price, priceDiscount, maxGroupSize, guides, locations, startLocation} = this.tourForm.value;
+    console.log(name, description, duration, summary, difficulty, price, priceDiscount, maxGroupSize, guides, locations, startLocation);
+    
 
-    if(this.tourForm.invalid) return;
-    // this.tourService.createTour({}as any).subscribe(tour => {
+    // if(this.tourForm.invalid) return;
+    // this.tourService.createTour({} as any).subscribe(tour => {
     //   console.log(tour);
     //   this.router.navigate(['/tour/info/']);
     // });
