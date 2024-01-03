@@ -13,7 +13,6 @@ export interface INewTour {
 
     // formGroup 
     startLocation: {
-        type: string,
         coordinates: number[],
         address: string,
         description: string
@@ -21,10 +20,9 @@ export interface INewTour {
 
     // formGroup
     locations: [{
-        type: string,
         coordinates: number[],
-        description: string,
-        day: number
+        address: string,
+        description: string
     }]
 
     // formGroup

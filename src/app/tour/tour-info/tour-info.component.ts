@@ -30,9 +30,9 @@ export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   tour: ITour | null = null;
   private map: L.Map | any;
+  
   tourObservable: ITour | any = this.tourService.tour(this.activatedRoute.snapshot.params['slug']);
   tourSubject$ = new Subject<ITour>();
-
 
   constructor(private tourService: TourService, private activatedRoute: ActivatedRoute) {}
 

@@ -42,6 +42,6 @@ export class TourService {
   }
 
   createTour(tour: INewTour) {
-    return this.httpClient.post<INewTour>(`/api/tours`, tour);
+    return this.httpClient.post<INewTour | ITour | any>(`/api/tours`, tour);
   }
 }
