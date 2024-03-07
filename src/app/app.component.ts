@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivationStart, Router, RoutesRecognized } from '@angular/router';
 import { filter, map, tap } from 'rxjs/operators';
@@ -8,10 +8,13 @@ import { filter, map, tap } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'nature\'s tours';
+  // dob!: string;
 
-  constructor(private router: Router, private pageTitle: Title) {
+  constructor(private router: Router, private pageTitle: Title) {}
+
+  ngOnInit(): void {
     // this.router.config.filter(obj => obj.data != undefined);
     this.router.events.pipe(
       filter((e): e is ActivationStart => e instanceof ActivationStart),
@@ -22,4 +25,6 @@ export class AppComponent {
       this.pageTitle.setTitle(pageTitle);
     });
   }
+
+  
 }
