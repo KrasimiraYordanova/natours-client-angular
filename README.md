@@ -10,6 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
  - SCSS
  - BEM notation
  - NPM
+ - JWT
 
 
 ## Summery of the project
