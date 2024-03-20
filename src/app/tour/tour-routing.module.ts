@@ -10,7 +10,6 @@ const routes: Routes = [
   {
     path: 'tours',
     component: ToursComponent,
-    // canActivate: [authGuard()],
     data: {
         title: "Nature's tours | all tours",
         // loginRequired: false

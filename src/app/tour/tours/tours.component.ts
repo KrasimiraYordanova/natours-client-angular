@@ -10,14 +10,11 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ToursComponent implements OnInit{
 
-  private mySubscription: Subscription | undefined;
+  tours: ITour[] | null = null;
 
   constructor(private tourService: TourService) { }
 
-  tours: ITour[] | null = null;
-
   ngOnInit(): void {
-
     this.tourService.allTours().subscribe({
       next: (tours) => {
         console.log(tours);

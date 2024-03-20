@@ -12,7 +12,7 @@ export class TourDetailComponent implements OnInit{
   tour!: ITour;
 
   ngOnInit(): void {
-    console.log(this.tour);
+    // console.log(this.tour);
   }
 
 }

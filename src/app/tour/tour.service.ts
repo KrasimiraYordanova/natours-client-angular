@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ITour } from '../shared/interfaces';
-import { map } from 'rxjs';
+import { Subject, map, tap } from 'rxjs';
 import { INewTour } from '../shared/interfaces/newTour';
 
 @Injectable({

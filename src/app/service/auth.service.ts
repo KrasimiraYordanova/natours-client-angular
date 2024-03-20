@@ -26,7 +26,6 @@ export class AuthService implements OnDestroy{
       })
   }
 
-
   register(name: string, email: string, password: string, rePassword: string) {
     return this.http.post<IAuth>(`api/auth/register`, { name, email, password, rePassword })
     .pipe(tap(user => this.user$$.next(user)));
