@@ -13,6 +13,10 @@ const routes: Routes = [
       title: "Nature's tours"
     }
   },
+  // {
+  //   path: 'tours',
+  //   loadChildren: () => import('./tour/tour.module').then(m => m.TourModule)
+  // },
   {
     path: 'not-found',
     component: PageNotFoundComponent,

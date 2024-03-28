@@ -42,6 +42,14 @@ export class TourService {
   }
 
   createTour(tour: INewTour) {
-    return this.httpClient.post<INewTour | ITour | any>(`/api/tours`, tour);
+    return this.httpClient.post<INewTour | ITour>(`/api/tours`, tour);
+  }
+
+  updateTour(id: string, tour: INewTour) {
+    return this.httpClient.put<ITour | INewTour>(`/api/tours/${id}`, tour);
+  }
+
+  deleteTour(id: string) {
+    return this.httpClient.delete<ITour>(`/api/tours/${id}`);
   }
 }

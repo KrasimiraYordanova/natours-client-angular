@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './app/modal/modal/modal-animations.scss';
 
 $color-light-grey: #f8f8f8;
 $color-dark-gray: #323232;
@@ -41,3 +42,4 @@ main {
   display: flex;
   flex-direction: column;
 }
+

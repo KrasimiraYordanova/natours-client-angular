@@ -113,9 +113,45 @@
             <div class="cta__content">
                 <h2 class="heading-secondary">What are you waiting for?</h2>
                 <p class="cta__text">{{tour?.duration}} days. 1 adventure. Infinite memories. Make it yours today!</p>
-                <button class="btn btn--rose">Create memories now!</button>
+                <button class="btn btn--rose" *ngIf="!isOwner">Create memories now!</button>
             </div>
         </div>
     </section>
 
+    <!-- <a class="btn btn-owner btn--rose" (click)="delTour()">Yes</a> -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- TEMPLATE #VIEW -->
+    <div class="container">
+        <!-- Add a TemplateRef on ng-template  -->
+        <ng-template #view>
+            <div class="modal-container">
+                <div class="title">
+                    <h2>Are you sure you want to delete {{tour?.name}} tour?</h2>
+                </div>
+                <div class="footer">
+                    <button class="btn btn-modal btn--rose" (click)="close()">Close</button>
+                    <a class="btn btn-modal btn--rose" (click)="delTour()">Yes</a>
+                </div>
+            </div>
+        </ng-template>
+
+        <div class="btn-tour-modifier" *ngIf="isOwner">
+            <button class="btn btn-owner btn--rose" (click)="editTour(tour!._id)">Edit tour</button>
+            <!-- Pass the TemplateRef to the method we will create -->
+            <button class="btn btn-owner btn--rose" (click)="openModalTemplate(view)">Delete tour</button>
+        </div>
+    </div>
+    
 </main>
+
+
+
+<!-- Pass the TemplateRef to the method we will create -->
+<!-- <button class="template" (click)="openModalTemplate(view)">
+  Open modal with TemplateRef
+</button> -->
+
+<!-- Second approach
+<button (click)="openModalComponent()">Open modal with a component</button> -->

@@ -179,15 +179,15 @@
     left: 0;
     right: 0;
     bottom: 0;
-  }
-  
-  .map-frame {
+}
+
+.map-frame {
     height: 100%;
-  }
-  
-  #map {
+}
+
+#map {
     height: 100%;
-  }
+}
 
 
 
@@ -387,4 +387,31 @@
 .btn {
     width: 100%;
     margin: 0 auto 0 auto;
+}
+
+.btn-tour-modifier {
+    text-align: center;
+}
+
+.btn-owner {
+    width: 10%;
+
+    &:not(:last-child) {
+        margin-right: 2rem;
+    }
+}
+
+.btn-modal {
+    width: 20%;
+
+    &:not(:last-child) {
+        margin-right: 2rem;
+    }
+}
+
+.modal-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
