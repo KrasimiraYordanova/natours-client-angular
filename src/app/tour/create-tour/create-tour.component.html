@@ -3,7 +3,10 @@
     <div class="form-container">
         <form class="form" [formGroup]="tourForm" (ngSubmit)="tourHandler()">
 
-            <h2>Create a Tour</h2>
+            <h2 *ngIf="!tour">Create a Tour</h2>
+            <h2 *ngIf="tour">Edit Tour</h2>
+
+            <p>{{tour | json}}</p>
 
             <div class="form-flex">
                 <div class="form-flex__upper">
@@ -248,7 +251,8 @@
                     <!-- {{ tourForm.get('pass')?.errors | json }} -->
                 </div>
             </div>
-            <button class="btn btn--white" [disabled]="tourForm.invalid" type="submit">Create Tour</button>
+            <button *ngIf="!tour" class="btn btn--white" [disabled]="tourForm.invalid" type="submit">Create Tour</button>
+            <button *ngIf="tour" class="btn btn--white" [disabled]="tourForm.invalid" type="submit">Edit Tour</button>
         </form>
     </div>
 

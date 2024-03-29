@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ITour } from '../shared/interfaces';
-import { Subject, map, tap } from 'rxjs';
+import { BehaviorSubject, Subject, map } from 'rxjs';
 import { INewTour } from '../shared/interfaces/newTour';
 
 @Injectable({
@@ -9,7 +9,13 @@ import { INewTour } from '../shared/interfaces/newTour';
 })
 export class TourService {
 
+  public tourSlug$$ = new BehaviorSubject<string | null>(null);
+
   constructor(private httpClient: HttpClient) { }
+
+  sendTourSlug(slug: string) {
+    this.tourSlug$$.next(slug);
+  }
 
   allTours() {
     return this.httpClient.get<ITour[]>(`/api/tours`);

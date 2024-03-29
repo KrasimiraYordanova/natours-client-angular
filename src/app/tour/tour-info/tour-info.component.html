@@ -138,7 +138,7 @@
         </ng-template>
 
         <div class="btn-tour-modifier" *ngIf="isOwner">
-            <button class="btn btn-owner btn--rose" (click)="editTour(tour!._id)">Edit tour</button>
+            <button class="btn btn-owner btn--rose" (click)="transferTourId(tour!.slug)">Edit tour</button>
             <!-- Pass the TemplateRef to the method we will create -->
             <button class="btn btn-owner btn--rose" (click)="openModalTemplate(view)">Delete tour</button>
         </div>

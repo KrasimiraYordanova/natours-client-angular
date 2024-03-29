@@ -35,6 +35,7 @@ export interface ITour {
           type: string, // yes
           coordinates: number[], // yes
           description: string, // yes
+          address: string
           day: number 
         }] // no
         

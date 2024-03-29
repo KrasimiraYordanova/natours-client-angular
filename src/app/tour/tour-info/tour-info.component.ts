@@ -137,8 +137,9 @@ export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.modalService.close();
   }
 
-  editTour(id: string) {
-    console.log(id);
+  transferTourId(slug: string) {
+    this.tourService.sendTourSlug(slug);
+    this.router.navigate(['/tour/create']);
   }
 
   ngOnDestroy(): void {
