@@ -131,6 +131,11 @@
                             Max group size should be a valid number
                         </p>
                     </ng-container>
+
+                    <!-- FILE UPLOADER -->
+                    <div class="form__field-group">
+                        <app-file-uploader></app-file-uploader>
+                    </div>
                 </div>
 
                 <div class="form-flex__lower">
@@ -251,7 +256,8 @@
                     <!-- {{ tourForm.get('pass')?.errors | json }} -->
                 </div>
             </div>
-            <button *ngIf="!tour" class="btn btn--white" [disabled]="tourForm.invalid" type="submit">Create Tour</button>
+            <button *ngIf="!tour" class="btn btn--white" [disabled]="tourForm.invalid" type="submit">Create
+                Tour</button>
             <button *ngIf="tour" class="btn btn--white" [disabled]="tourForm.invalid" type="submit">Edit Tour</button>
         </form>
     </div>

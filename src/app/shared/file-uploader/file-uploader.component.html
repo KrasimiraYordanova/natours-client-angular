@@ -1,0 +1,7 @@
+<input type="file" class="form__field-input form__field-file-input" formControlName="coverImage" id="coverImage"
+    #fileUpload>
+
+<div class="form__field-file-upload">
+    <p>{{fileName || "No file ulpoded yet."}}</p>
+    <button type="button" class="btn btn--nutral btn--upload btn--upload-icon" (click)="fileUpload.click()">Upload</button>
+</div>

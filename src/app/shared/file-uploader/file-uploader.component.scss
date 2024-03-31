@@ -1,5 +1,5 @@
-@import "../styles/variables.scss";
-@import "../styles/componants.scss";
+@import "../../styles/form-componant.scss";
+@import "../../styles/componants.scss";
 
 .form-container {
     background-color: $color-white;
@@ -56,4 +56,9 @@
     &__paragraph {
         margin-top: 2rem;
     }
+}
+
+.btn {
+    width: 31%;
+    margin: 1rem auto 0 auto;
 }

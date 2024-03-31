@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TourService } from '../tour.service';
@@ -40,6 +40,9 @@ export class CreateTourComponent implements OnInit {
 
   tourSlug!: string;
   tour!: ITour | INewTour;
+
+  @Input()
+  fileName = '';
 
   constructor(private fb: FormBuilder, private router: Router, private tourService: TourService) { }
 
@@ -88,6 +91,10 @@ export class CreateTourComponent implements OnInit {
         },
       })
     }
+  }
+
+  onFileSelected(event:Event) {
+    console.log(event);
   }
 
   addLocation() {
