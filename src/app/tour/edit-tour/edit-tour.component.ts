@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { TourService } from '../tour.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ITour } from 'src/app/shared/interfaces';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { INewTour } from 'src/app/shared/interfaces/newTour';
 
 interface ILocation {
@@ -11,11 +12,11 @@ interface ILocation {
 }
 
 @Component({
-  selector: 'app-create-tour',
-  templateUrl: './create-tour.component.html',
-  styleUrls: ['./create-tour.component.scss']
+  selector: 'app-edit-tour',
+  templateUrl: './edit-tour.component.html',
+  styleUrls: ['./edit-tour.component.scss']
 })
-export class CreateTourComponent {
+export class EditTourComponent implements OnInit {
 
   tourForm = this.fb.group({
     name: [''],
@@ -38,9 +39,47 @@ export class CreateTourComponent {
     guides: this.fb.array([])
   })
 
-  fileName: string | undefined = '';
+  tourSlug: string = this.activatedRoute.snapshot.params['slug'];
+  tour!: ITour | INewTour;
 
-  constructor(private fb: FormBuilder, private router: Router, private tourService: TourService) { }
+  fileName = '';
+
+
+  constructor(private tourService: TourService, private activatedRoute: ActivatedRoute, private fb: FormBuilder, private router: Router) {}
+  
+
+  ngOnInit(): void {
+      this.tourService.tourId(this.tourSlug).subscribe({
+        next: tour => {
+          this.tourForm.patchValue({
+            name: tour.name,
+            description: tour.description,
+            duration: tour.duration,
+            summary: tour.summary,
+            difficulty: tour.difficulty,
+            price: tour.price,
+            priceDiscount: '',
+            maxGroupSize: tour.maxGroupSize,
+            coverImage: tour.imageCover,
+            startLocation: {
+              coordinates: tour.startLocation.coordinates.join(','),
+              address: tour.startLocation.address,
+              description: tour.startLocation.description
+            },
+            // locations: tour.locations.foreach((location: any) => {
+            //   const obj = {
+            //     coordinates: location.coordinates,
+            //     address: location.address,
+            //     description: location.description
+            //   }
+            // }),
+          });
+        },
+        error(err) {
+          console.log(err);
+        },
+      })
+  }
 
   get locations() {
     return this.tourForm.controls["locations"] as FormArray;
@@ -54,8 +93,8 @@ export class CreateTourComponent {
     const input = event.target as HTMLInputElement;
     console.log(input);
 
-    const file = input.files;
-    console.log(file);
+    // const file = input.files[0];
+    // console.log(file);
   }
 
 
@@ -86,22 +125,19 @@ export class CreateTourComponent {
     this.guides.removeAt(guideIndex);
   }
 
+
   tourHandler() {
     console.log(this.tourForm.value);
-    let { name, description, duration, summary, difficulty, price, priceDiscount, maxGroupSize, startLocation, locations, guides } = this.tourForm.value;
+    let { name, description, duration, summary, difficulty, price, priceDiscount, maxGroupSize, coverImage, startLocation, locations, guides } = this.tourForm.value;
 
     locations = locations?.map((loc: ILocation | any) => {
-      console.log(loc.coordinates);
-      loc.coordinates = loc.coordinates.split(',');
-      console.log(loc.coordinates);
+      loc.coordinates = loc.coordinates.split(', ');
       loc.coordinates[0] = Number(loc.coordinates[0]);
       loc.coordinates[1] = Number(loc.coordinates[1]);
       return loc;
     });
 
-    console.log(locations);
-
-    const startCoords = startLocation?.coordinates?.split(',');
+    const startCoords = startLocation?.coordinates?.split(', ');
     const lat = Number(startCoords![0]);
     const lng = Number(startCoords![1]);
 
@@ -114,6 +150,7 @@ export class CreateTourComponent {
       price: Number(price),
       priceDiscount: Number(priceDiscount),
       maxGroupSize: Number(maxGroupSize),
+      imageCover: coverImage,
       guides,
       locations,
       startLocation: {
@@ -124,9 +161,8 @@ export class CreateTourComponent {
     }
 
     if (this.tourForm.invalid) return;
-    this.tourService.createTour(tour).subscribe(tour => {
-      this.router.navigate([`/tours`]);
+    this.tourService.updateTour(this.activatedRoute.snapshot.params['slug'], tour).subscribe(tour => {
+      this.router.navigate([`/tour/${this.tourSlug}`]);
     });
   }
 }
-

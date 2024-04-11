@@ -5,6 +5,7 @@ import { ToursComponent } from './tours/tours.component';
 import { CreateTourComponent } from './create-tour/create-tour.component';
 import { TourInfoComponent } from './tour-info/tour-info.component';
 import { authGuard } from '../shared/guards/auth.guard';
+import { EditTourComponent } from './edit-tour/edit-tour.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,13 @@ const routes: Routes = [
             component: TourInfoComponent,
             data: {
                 title: "Nature's tours | tour detail",
+              }
+          },
+          {
+            path: 'edit/:slug',
+            component: EditTourComponent,
+            data: {
+                title: "Nature's tours | edit tour",
               }
           },
     ]

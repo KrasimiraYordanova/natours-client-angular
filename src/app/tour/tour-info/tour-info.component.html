@@ -100,6 +100,62 @@
                 </div>
             </ng-container>
         </div>
+
+
+        <ng-container *ngIf="!isOwner">
+            <div *ngIf="!!user" class="button-holder">
+                <button *ngIf="!!user" class="btn btn--create" [disabled]="isFormClosed==false"
+                    (click)="showReviewForm(hiddenReviewForm)">Add Review +</button>
+            </div>
+        </ng-container>
+
+        <ng-container #container></ng-container>
+
+        <ng-template #hiddenReviewForm>
+            <div class="form-container">
+                <form class="form" [formGroup]="reviewForm" (ngSubmit)="reviewHandler()">
+
+                    <div class="form-flex">
+                        <div class="form-flex__upper">
+
+                            <p class="form__field-label bold" (click)="closeReviewForm()">X</p>
+                            <!-- DESCRIPTION -->
+                            <p class="form__field-group">
+                                <label class="form__field-label" for="review">Review</label>
+                                <textarea class="form__field-input" id="review" formControlName="review"
+                                    required></textarea>
+                            </p>
+                            <ng-container
+                                *ngIf="(reviewForm.get('review')?.invalid && reviewForm.get('review')?.touched)">
+                                <p class="form__field-error" *ngIf="reviewForm.get('review')?.errors?.['required']">
+                                    Review is required!
+                                </p>
+                                <p class="form__field-error" *ngIf="reviewForm.get('review')?.errors?.['minlength']">
+                                    review should be at least 20 characters long
+                                </p>
+                            </ng-container>
+
+                            <!-- RATING -->
+                            <p class="form__field-group">
+                                <label class="form__field-label" for="rating">Rating</label>
+                                <input class="form__field-input" type="text" formControlName="rating" id="rating"
+                                    required>
+                            </p>
+                            <ng-container
+                                *ngIf="(reviewForm.get('rating')?.invalid && reviewForm.get('rating')?.touched)">
+                                <p class="form__field-error" *ngIf="reviewForm.get('rating')?.errors?.['required']">
+                                    Rating is required!
+                                </p>
+                                <p class="form__field-error" *ngIf="reviewForm.get('rating')?.errors?.['minlength']">
+                                    Rating should be a valid number
+                                </p>
+                            </ng-container>
+                        </div>
+                        <button class="btn btn--white" [disabled]="reviewForm.invalid" type="submit">Add review</button>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
     </section>
 
     <section class="section-cta">
@@ -138,12 +194,12 @@
         </ng-template>
 
         <div class="btn-tour-modifier" *ngIf="isOwner">
-            <button class="btn btn-owner btn--rose" (click)="transferTourId(tour!.slug)">Edit tour</button>
+            <button class="btn btn-owner btn--rose" routerLink="/tour/edit/{{tour?.slug}}">Edit tour</button>
             <!-- Pass the TemplateRef to the method we will create -->
             <button class="btn btn-owner btn--rose" (click)="openModalTemplate(view)">Delete tour</button>
         </div>
     </div>
-    
+
 </main>
 
 

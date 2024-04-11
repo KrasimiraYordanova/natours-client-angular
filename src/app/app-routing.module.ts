@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { FileUploaderComponent } from './shared/file-uploader/file-uploader.component';
 
 const routes: Routes = [
   {

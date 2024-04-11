@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ITour } from 'src/app/shared/interfaces';
 import { TourService } from '../tour.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,8 @@ import * as L from "leaflet";
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
 import { ModalService } from 'src/app/modal/modal.service';
+import { FormBuilder } from '@angular/forms';
+import { INewReview } from 'src/app/shared/interfaces/newReview';
 
 const iconRetinaUrl = './assets/marker-icon-2x.png';
 const iconUrl = './assets/marker-icon.png';
@@ -28,11 +30,18 @@ L.Marker.prototype.options.icon = iconDefault;
   templateUrl: './tour-info.component.html',
   styleUrls: ['./tour-info.component.scss']
 })
-export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TourInfoComponent implements OnInit, AfterViewInit, DoCheck ,OnChanges, OnDestroy {
   // Query the #view element in the template, ecpecting it ot be of type ViewContainerRef
   // and store the reference into the variable viewContainerRef
   @ViewChild('view', {static: true, read: ViewContainerRef})
   viewContainerRef!: ViewContainerRef;
+
+  // @ViewChild('hiddenReviewForm', {static: true, read: ViewContainerRef})
+  // hiddenElementRef!: ViewContainerRef;
+
+  @ViewChild('container', { read: ViewContainerRef }) vcrContainer!: ViewContainerRef;
+
+  isFormClosed: boolean = true;
 
   tour: ITour | null = null;
   private map: L.Map | any;
@@ -46,7 +55,12 @@ export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   tourObservable: ITour | any = this.tourService.tour(this.activatedRoute.snapshot.params['slug']);
   tourSubject$ = new Subject<ITour>();
 
-  constructor(private tourService: TourService, private activatedRoute: ActivatedRoute, private authService: AuthService, private router: Router, private modalService: ModalService) {}
+  reviewForm = this.fb.group({
+    review: [''],
+    rating: [''],
+  })
+
+  constructor(private tourService: TourService, private activatedRoute: ActivatedRoute, private authService: AuthService, private router: Router, private modalService: ModalService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.tourObservable.subscribe(this.tourSubject$);
@@ -137,11 +151,35 @@ export class TourInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.modalService.close();
   }
 
-  transferTourId(slug: string) {
-    this.tourService.sendTourSlug(slug);
-    this.router.navigate(['/tour/create']);
+  ngOnDestroy(): void {}
+
+  ngDoCheck(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {}
+
+
+  reviewHandler() {
+    console.log(this.reviewForm.value);
+    let { review, rating } = this.reviewForm.value;
+
+    const newReview: INewReview | any = {
+      review,
+      rating: Number(rating)
+    }
+
+    if (this.reviewForm.invalid) return;
+    this.tourService.createReviewForTour(this.tour!.slug, newReview).subscribe(tour => {
+    });
+    this.reviewForm.reset();
   }
 
-  ngOnDestroy(): void {
+  showReviewForm(hiddenElement: TemplateRef<any>) {
+    this.isFormClosed = !this.isFormClosed;
+    this.vcrContainer.createEmbeddedView(hiddenElement);
+  }
+
+  closeReviewForm() {
+    this.vcrContainer.clear();
+    this.isFormClosed = !this.isFormClosed;
   }
 }

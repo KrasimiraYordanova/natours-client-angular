@@ -2,6 +2,9 @@
 @import "../../styles/typography.scss";
 @import "../../styles/componants.scss";
 
+@import "../../styles/form-componant.scss";
+
+
 // SECTION 1
 
 .section-header {
@@ -205,22 +208,23 @@
             from($color-rose-light),
             to($color-rose-dark));
     background: linear-gradient(to right bottom, $color-rose-light, $color-rose-dark);
-    -webkit-clip-path: polygon(0 0, 100% 5%, 100% 88%, 0 100%);
-    clip-path: polygon(0 0, 100% 5%, 100% 88%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%);
+    clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%);
 }
 
 .reviews {
     padding: 5rem 0;
-    display: grid;
-    grid-column-gap: 6rem;
-    grid-auto-flow: column;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
     overflow-x: scroll;
     -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
 
     &__card {
-        width: 30rem;
-        padding: 4rem;
+        width: 60rem;
+        padding: 2rem;
         background-color: #f7f7f7;
         border-radius: 3px;
         -webkit-box-shadow: 0.1rem 0.8rem 1.5rem rgba($color-black, .15);
@@ -251,7 +255,7 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     //   &__avatar-img {
@@ -267,7 +271,7 @@
 
     &__text {
         font-size: 1.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         font-style: italic;
         font-weight: 400;
     }
@@ -414,4 +418,100 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
+}
+
+
+
+
+//// REVIEW FORM
+
+.form-container {
+    width: 60rem;
+    background-color: $color-white;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.form {
+    border-radius: 0.3em;
+    padding: 2rem 3em;
+
+    &__field-group {
+        // padding-bottom: 0;
+        padding-top: 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__field-label {
+        text-align: left;
+    }
+
+    &__field-input {
+        flex: 0 1 100%;
+        border: none;
+        padding: 0.5em;
+        border-radius: 0.3rem;
+    }
+
+    &__field-file-input {
+        display: none;
+    }
+
+    &__field-error {
+        padding-bottom: 0;
+        padding-top: 1.5rem;
+
+        text-align: left;
+        border-radius: 0.3em;
+        color: $color-error;
+        padding-top: 0;
+    }
+
+    &__paragraph {
+        margin-top: 2rem;
+    }
+}
+
+.form-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-group-align {
+    margin-top: 1.5rem;
+
+    &__array {
+        margin-top: 2rem;
+    }
+
+    &__element {
+        width: 80%;
+        margin: 2rem auto 0 auto;
+    }
+}
+
+
+.button-holder {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.btn--create {
+    background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
+    // background-color: $color-light-white;
+    color: inherit;
+    border-radius: 5rem;
+    width: 15%;
+}
+
+.bold {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: end;
+    cursor: pointer;
 }
