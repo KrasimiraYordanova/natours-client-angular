@@ -501,12 +501,28 @@
     margin-bottom: 1rem;
 }
 
-.btn--create {
-    background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
-    // background-color: $color-light-white;
-    color: inherit;
-    border-radius: 5rem;
-    width: 15%;
+.btn {
+    &--create {
+        // background-image: linear-gradient(to right bottom, rgba($color-golden, .15), $color-white);
+        background-color: $color-light-white;
+        color: inherit;
+        border-radius: 5rem;
+        width: 15%;
+    }
+
+    &--review {
+        padding: 0.5rem 1rem;
+        width: 10rem;
+        background-image: linear-gradient(to right bottom, rgba($color-rose-light, .5), $color-light-grey);
+        border-radius: 5rem;
+        color: inherit;
+    }
+}
+
+.review-btns-wrapper {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 .bold {
@@ -514,4 +530,8 @@
     font-weight: bold;
     text-align: end;
     cursor: pointer;
+}
+
+.reviewTitle {
+    text-align: center;
 }

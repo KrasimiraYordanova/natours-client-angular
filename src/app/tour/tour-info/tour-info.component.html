@@ -84,6 +84,7 @@
     </section>
 
     <section class="section-reviews">
+        <h2 class="reviewTitle">TOUR REVIEWS:</h2>
         <div class="reviews">
             <ng-container *ngFor="let review of tour?.reviews; let i = index">
                 <div class="reviews__card">
@@ -96,6 +97,14 @@
                         <p>{{review.rating}} stars</p>
                         <!-- each star in [1, 2, 3, 4, 5]
                     svg.reviews__star(class=`reviews__star--${review.rating >= star ? 'active' : 'inactive'}`) -->
+                    </div>
+
+                    <!-- IF REVIEW owenr BELONGS TO THE USER -->
+                    <div class="review-btns-wrapper" *ngIf="review.user._id == user?._id">
+                        <!-- EDIT BTN -->
+                        <button class="btn btn--review" (click)="editReview">Edit</button>
+                        <!-- DELETE BTN -->
+                        <button class="btn btn--review" (click)="deleteReview(review._id)">Delete</button>
                     </div>
                 </div>
             </ng-container>

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, DoCheck, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { ITour } from 'src/app/shared/interfaces';
+import { IReview, ITour } from 'src/app/shared/interfaces';
 import { TourService } from '../tour.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as L from "leaflet";
@@ -51,6 +51,7 @@ export class TourInfoComponent implements OnInit, AfterViewInit, DoCheck ,OnChan
   }
 
   isOwner!: boolean;
+  isUserReview!: boolean;
   
   tourObservable: ITour | any = this.tourService.tour(this.activatedRoute.snapshot.params['slug']);
   tourSubject$ = new Subject<ITour>();
@@ -182,4 +183,12 @@ export class TourInfoComponent implements OnInit, AfterViewInit, DoCheck ,OnChan
     this.vcrContainer.clear();
     this.isFormClosed = !this.isFormClosed;
   }
+
+  deleteReview(reviewId: string) {
+    console.log(reviewId);
+    this.tourService.deleteReview(reviewId).subscribe();
+    this.router.navigate([`/tour/${this.tour!.slug}`]);
+  }
+
+  editReview() {}
 }

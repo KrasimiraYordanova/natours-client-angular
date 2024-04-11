@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ITour } from '../shared/interfaces';
+import { IReview, ITour } from '../shared/interfaces';
 import { BehaviorSubject, Subject, map } from 'rxjs';
 import { INewTour } from '../shared/interfaces/newTour';
 import { INewReview } from '../shared/interfaces/newReview';
@@ -75,6 +75,10 @@ export class TourService {
 
   createReviewForTour(slug: string, review: INewReview) {
     return this.httpClient.post<INewTour | ITour>(`/api/tours/${slug}/reviews`, review);
+  }
+
+  deleteReview(reviewId: string) {
+    return this.httpClient.delete<IReview>(`/api/reviews/${reviewId}`);
   }
 
   updateTour(slug: string, tour: INewTour) {
