@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TourService } from '../tour.service';
 import { INewTour } from 'src/app/shared/interfaces/newTour';
+// import { mimeType } from 'src/app/shared/validators/mime-type.validator';
 
 interface ILocation {
   coordinates: string,
@@ -26,7 +27,7 @@ export class CreateTourComponent {
     price: [''],
     priceDiscount: [''],
     maxGroupSize: [''],
-    coverImage: '',
+    coverImage: [''],
     startLocation: this.fb.group({
       coordinates: [''],
       address: [''],
@@ -50,12 +51,12 @@ export class CreateTourComponent {
   }
 
   onFileSelected(event:Event): void {
-    console.log(event);
-    const input = event.target as HTMLInputElement;
-    console.log(input);
-
-    const file = input.files;
+    const file = (event.target as HTMLInputElement).files![0];
+    // this.fileName = file.name;
+    // this.tourForm.patchValue({ coverImage: file });
+    this.tourForm.get('coverImage')?.updateValueAndValidity();
     console.log(file);
+    console.log(this.tourForm);
   }
 
 
@@ -88,18 +89,14 @@ export class CreateTourComponent {
 
   tourHandler() {
     console.log(this.tourForm.value);
-    let { name, description, duration, summary, difficulty, price, priceDiscount, maxGroupSize, startLocation, locations, guides } = this.tourForm.value;
+    let { name, description, duration, summary, difficulty, price, priceDiscount, maxGroupSize, coverImage, startLocation, locations, guides } = this.tourForm.value;
 
     locations = locations?.map((loc: ILocation | any) => {
-      console.log(loc.coordinates);
       loc.coordinates = loc.coordinates.split(',');
-      console.log(loc.coordinates);
       loc.coordinates[0] = Number(loc.coordinates[0]);
       loc.coordinates[1] = Number(loc.coordinates[1]);
       return loc;
     });
-
-    console.log(locations);
 
     const startCoords = startLocation?.coordinates?.split(',');
     const lat = Number(startCoords![0]);
@@ -114,6 +111,7 @@ export class CreateTourComponent {
       price: Number(price),
       priceDiscount: Number(priceDiscount),
       maxGroupSize: Number(maxGroupSize),
+      imageCover: coverImage,
       guides,
       locations,
       startLocation: {

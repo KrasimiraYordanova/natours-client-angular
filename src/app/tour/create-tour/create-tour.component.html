@@ -131,7 +131,7 @@
 
                     <!-- FILE UPLOADER -->
                     <div class="form__field-group">
-                        <input type="file" class="form__field-input form__field-file-input" formControlName="coverImage"
+                        <input type="file" class="form__field-input form__field-file-input"
                             id="coverImage" (change)="onFileSelected($event)" #fileUpload>
 
                         <div class="form__field-file-upload">
@@ -139,6 +139,9 @@
                             <button type="button" class="btn btn--nutral btn--upload"
                                 (click)="fileUpload.click()">Upload</button>
                         </div>
+                    </div>
+                    <div class="image-preview">
+                        <img src="" alt="">
                     </div>
                 </div>
 
